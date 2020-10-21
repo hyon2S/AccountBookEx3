@@ -81,30 +81,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/csl_form"
             app:layout_constraintBottom_toBottomOf="parent"
-            >
-            <Button
-                style="@style/InsertFormBtn"
-                android:id="@+id/btn_cancel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="취소"
-                app:layout_constraintWidth_percent="0.5"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/btn_confirm"
-                />
-            <Button
-                style="@style/InsertFormBtn"
-                android:id="@+id/btn_confirm"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="확인"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/btn_cancel"
-                app:layout_constraintRight_toRightOf="parent"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

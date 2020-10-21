@@ -9,10 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.databinding.ActivityInsertFormBinding
 import com.example.accountbookex3.exception.RecordFormException
+import com.example.accountbookex3.fragment.InsertButtonFragment
 import com.example.accountbookex3.util.TextViewDatePickerCreator
 import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModel
-import kotlinx.android.synthetic.main.activity_insert_form.*
 
 class InsertFormActivity : AppCompatActivity() {
     private val TAG = "InsertFormActivityLog"
@@ -30,6 +30,9 @@ class InsertFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insert_form)
 
+        attachFragment()
+        Log.d(TAG, "버튼fragment 붙임")
+
         binding.formedRecord = insertViewModel.formedRecord
         // executePendingBindings 없으면 회전하면 화면 초기화 됨.
         binding.executePendingBindings()
@@ -38,22 +41,19 @@ class InsertFormActivity : AppCompatActivity() {
 
         datePickerCreator.tvDate = binding.tvDate
 
-        // OnClickListener 설정
-        btn_cancel.setOnClickListener { cancel() }
-        btn_confirm.setOnClickListener { confirm() }
         binding.tvDate.setOnClickListener {
             datePickerCreator.showDatePickerDialog()
         }
     }
 
     // 취소버튼 누르면 일어나는 일
-    private fun cancel() {
+    fun cancel() {
         Log.d(TAG, "cancel()")
         finish()
     }
 
-    // 확인버튼 누르면 일어나는 일
-    private fun confirm() {
+    // db에 새 데이터 추가함
+    fun insert() {
         Log.d(TAG, "confirm()")
 
         Log.d(TAG, insertViewModel.formedRecord.toString())
@@ -67,5 +67,16 @@ class InsertFormActivity : AppCompatActivity() {
         } catch (e: RecordFormException) {
             Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun attachFragment() {
+        Log.d(TAG, "attachFragment()")
+        val btnFragment: InsertButtonFragment =
+            supportFragmentManager.findFragmentById(R.id.csl_buttons) as InsertButtonFragment? ?: InsertButtonFragment()
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.csl_buttons, btnFragment)
+            .commit()
+        Log.d(TAG, "프래그먼트 붙임")
     }
 }
