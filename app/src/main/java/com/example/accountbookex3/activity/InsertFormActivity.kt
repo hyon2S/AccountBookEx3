@@ -7,28 +7,28 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
-import com.example.accountbookex3.databinding.ActivityInsertBinding
+import com.example.accountbookex3.databinding.ActivityInsertFormBinding
 import com.example.accountbookex3.exception.RecordFormException
 import com.example.accountbookex3.util.TextViewDatePickerCreator
 import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModel
-import kotlinx.android.synthetic.main.activity_insert.*
+import kotlinx.android.synthetic.main.activity_insert_form.*
 
-class InsertActivity : AppCompatActivity() {
-    private val TAG = "InsertActivityLog"
+class InsertFormActivity : AppCompatActivity() {
+    private val TAG = "InsertFormActivityLog"
 
     private val datePickerCreator = TextViewDatePickerCreator(this, "datePicker")
 
     private val insertViewModel by lazy { ViewModelProvider(this).get(InsertViewModel::class.java) }
-    private val binding: ActivityInsertBinding by lazy {
-        DataBindingUtil.setContentView<ActivityInsertBinding>(this, R.layout.activity_insert)
+    private val binding: ActivityInsertFormBinding by lazy {
+        DataBindingUtil.setContentView<ActivityInsertFormBinding>(this, R.layout.activity_insert_form)
     }
     private val dbViewModel by lazy { ViewModelProvider(this).get(DbViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate()")
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_insert)
+        setContentView(R.layout.activity_insert_form)
 
         binding.formedRecord = insertViewModel.formedRecord
         // executePendingBindings 없으면 회전하면 화면 초기화 됨.

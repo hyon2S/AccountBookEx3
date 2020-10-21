@@ -13,7 +13,7 @@
         style="@style/InsertFormLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.InsertActivity"
+        tools:context=".activity.InsertFormActivity"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/csl_form"

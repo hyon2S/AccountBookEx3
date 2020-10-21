@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private val insertActivityStarter =
             ActivityStarter(
                     this,
-                    InsertActivity::class.java
+                    InsertFormActivity::class.java
             )
 
     override fun onCreate(savedInstanceState: Bundle?) {
