@@ -6,7 +6,7 @@ import android.util.Log
 import com.example.accountbookex3.R
 import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
-import com.example.accountbookex3.util.ActivityStarter
+import com.example.accountbookex3.util.InsertFormActivityStarter
 
 /*
 * startActivity(intent) 관련 기능을 하는 구성요소들:
@@ -15,11 +15,7 @@ import com.example.accountbookex3.util.ActivityStarter
 * */
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivityLog"
-    private val insertActivityStarter =
-            ActivityStarter(
-                    this,
-                    InsertFormActivity::class.java
-            )
+    private val insertActivityStarter = InsertFormActivityStarter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate()")
