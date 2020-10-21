@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- layout 구성요소들 스타일 -->
+    <style name="RvDateTv">
+        <item name="android:background">@color/colorLightBlue</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:paddingLeft">15sp</item>
+    </style>
+
+    <style name="RvRecordTv">
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="RvRecordTvIncomeOutcome" parent="RvRecordTv">
+        <item name="android:paddingRight">15sp</item>
+        <item name="android:paddingLeft">15sp</item>
+    </style>
+
+    <style name="RvRecordTvAmount" parent="RvRecordTv">
+        <item name="android:gravity">right</item>
+        <item name="android:paddingRight">10sp</item>
+    </style>
+
+    <style name="RvDateLayout">
+        <item name="android:background">@drawable/rv_border</item>
+    </style>
+
+    <style name="RvRecordLayout">
+        <item name="android:padding">2dp</item>
+    </style>
+
+    <style name="RvInner">
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingBottom">1dp</item>
+    </style>
+
+    <style name="RvOuter">
+        <item name="android:padding">12sp</item>
+    </style>
+
+    <style name="InsertFormLayout">
+        <item name="android:padding">12sp</item>
+    </style>
+
+    <style name="InsertFormTv">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:padding">3dp</item>
+    </style>
+
+    <style name="InsertFormTvAmount" parent="InsertFormTv">
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="InsertFormRb" parent="InsertFormTv">
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@drawable/radio_button_textcolor</item>
+    </style>
+
+    <style name="InsertFormBtn">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="FragmentButton">
+        <item name="android:padding">15sp</item>
+    </style>
+</resources>

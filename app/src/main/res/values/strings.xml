@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AccountBookEx3</string>
+
+    <string name="income">수입</string>
+    <string name="outcome">지출</string>
+    <string name="date">날짜</string>
+
+    <string name="won">원</string>
+
+    <string name="date_is">날짜가</string>
+    <string name="income_outcome_is">수입/지출이</string>
+    <string name="amount_is">금액이</string>
+
+    <!-- 레코드 저장하고 완료되었음을 알리는 메시지. -->
+    <string name="insert_done_message">저장되었습니다.</string>
+
+    <!-- 추가버튼에 쓸 문구 -->
+    <string name="button_add">추가</string>
+
+    <!-- 손잡이에 '손잡이'라고 씀 ㅋㅋㅋㅋ 나중에 원래대로 돌려놓을 때 삭제하기 -->
+    <string name="handle">손잡이</string>
+</resources>
