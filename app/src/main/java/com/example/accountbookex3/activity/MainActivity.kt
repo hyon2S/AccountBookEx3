@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.accountbookex3.R
-import com.example.accountbookex3.fragment.ButtonFragment
+import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
 import com.example.accountbookex3.util.ActivityStarter
 
@@ -54,8 +54,8 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "attachFragment()")
         val rvFragment: RecyclerViewFragment =
                 supportFragmentManager.findFragmentById(R.id.csl_recycler_view) as RecyclerViewFragment? ?: RecyclerViewFragment()
-        val btnFragment: ButtonFragment =
-                supportFragmentManager.findFragmentById(R.id.csl_buttons) as ButtonFragment? ?: ButtonFragment()
+        val btnFragment: MainButtonFragment =
+                supportFragmentManager.findFragmentById(R.id.csl_buttons) as MainButtonFragment? ?: MainButtonFragment()
 
         supportFragmentManager.beginTransaction()
                 .replace(R.id.csl_recycler_view, rvFragment)
