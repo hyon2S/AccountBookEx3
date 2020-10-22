@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
-import com.example.accountbookex3.databinding.ActivityInsertFormBinding
+import com.example.accountbookex3.databinding.ActivityInsertBinding
 import com.example.accountbookex3.exception.RecordFormException
 import com.example.accountbookex3.fragment.InsertButtonFragment
 import com.example.accountbookex3.util.TextViewDatePickerCreator
@@ -15,21 +15,21 @@ import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModelFactory
 
-class InsertFormActivity : AppCompatActivity() {
-    private val TAG = "InsertFormActivityLog"
+class InsertActivity : AppCompatActivity() {
+    private val TAG = "InsertActivityLog"
 
     private val datePickerCreator = TextViewDatePickerCreator(this, "datePicker")
 
     private val dbViewModel by lazy { ViewModelProvider(this).get(DbViewModel::class.java) }
     private val insertViewModel by lazy { ViewModelProvider(this, InsertViewModelFactory(dbViewModel)).get(InsertViewModel::class.java) }
-    private val binding: ActivityInsertFormBinding by lazy {
-        DataBindingUtil.setContentView<ActivityInsertFormBinding>(this, R.layout.activity_insert_form)
+    private val binding: ActivityInsertBinding by lazy {
+        DataBindingUtil.setContentView<ActivityInsertBinding>(this, R.layout.activity_insert)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate()")
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_insert_form)
+        setContentView(R.layout.activity_insert)
 
         attachFragment()
         Log.d(TAG, "버튼fragment 붙임")

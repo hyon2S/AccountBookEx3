@@ -7,13 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.accountbookex3.R
-import com.example.accountbookex3.activity.InsertFormActivity
-import com.example.accountbookex3.activity.MainActivity
+import com.example.accountbookex3.activity.InsertActivity
 import kotlinx.android.synthetic.main.fragment_insert_button.*
 
 class InsertButtonFragment : Fragment() {
     private val TAG = "InsertButtonFragmentLog"
-    private val attachedActivity by lazy { activity as InsertFormActivity }
+    private val attachedActivity by lazy { activity as InsertActivity }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
