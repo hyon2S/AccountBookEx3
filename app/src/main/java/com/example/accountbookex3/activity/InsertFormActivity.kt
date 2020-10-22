@@ -23,7 +23,6 @@ class InsertFormActivity : AppCompatActivity() {
     private val binding: ActivityInsertFormBinding by lazy {
         DataBindingUtil.setContentView<ActivityInsertFormBinding>(this, R.layout.activity_insert_form)
     }
-    private val dbViewModel by lazy { ViewModelProvider(this).get(DbViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate()")
@@ -60,7 +59,8 @@ class InsertFormActivity : AppCompatActivity() {
         // viewmodel 이용해서 insert하기
         Log.d(TAG, "dbViewModel.insert()")
         try {
-            dbViewModel.insert(insertViewModel.formedRecord)
+            insertViewModel.insert()
+//            dbViewModel.insert(insertViewModel.formedRecord)
 
             Toast.makeText(this, getString(R.string.insert_done_message), Toast.LENGTH_SHORT).show()
             finish()
