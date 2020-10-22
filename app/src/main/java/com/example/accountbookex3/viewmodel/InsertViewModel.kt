@@ -3,7 +3,7 @@ package com.example.accountbookex3.viewmodel
 import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.FormedRecord
 
-class InsertViewModel: ViewModel() {
+class InsertViewModel(val dbViewModel: DbViewModel): ViewModel() {
     val formedRecord = FormedRecord()
 
     // 전부 지워도 됨. 일단 주석처리하겠음.
