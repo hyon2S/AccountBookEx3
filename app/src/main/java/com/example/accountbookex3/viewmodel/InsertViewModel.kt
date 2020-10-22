@@ -6,6 +6,8 @@ import com.example.accountbookex3.data.FormedRecord
 class InsertViewModel: ViewModel() {
     val formedRecord = FormedRecord()
 
+    // 전부 지워도 됨. 일단 주석처리하겠음.
+/*
     fun setDate(newDate: String) {
         formedRecord.setDate(newDate)
     }
@@ -18,4 +20,5 @@ class InsertViewModel: ViewModel() {
     fun getDate(): String = formedRecord.getDate()
     fun getIsIncome(): Boolean = formedRecord.getIsIncome()
     fun getAmount(): String = formedRecord.getAmount()
+*/
 }
