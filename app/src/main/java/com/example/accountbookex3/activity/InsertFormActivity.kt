@@ -13,13 +13,15 @@ import com.example.accountbookex3.fragment.InsertButtonFragment
 import com.example.accountbookex3.util.TextViewDatePickerCreator
 import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModel
+import com.example.accountbookex3.viewmodel.InsertViewModelFactory
 
 class InsertFormActivity : AppCompatActivity() {
     private val TAG = "InsertFormActivityLog"
 
     private val datePickerCreator = TextViewDatePickerCreator(this, "datePicker")
 
-    private val insertViewModel by lazy { ViewModelProvider(this).get(InsertViewModel::class.java) }
+    private val dbViewModel by lazy { ViewModelProvider(this).get(DbViewModel::class.java) }
+    private val insertViewModel by lazy { ViewModelProvider(this, InsertViewModelFactory(dbViewModel)).get(InsertViewModel::class.java) }
     private val binding: ActivityInsertFormBinding by lazy {
         DataBindingUtil.setContentView<ActivityInsertFormBinding>(this, R.layout.activity_insert_form)
     }
