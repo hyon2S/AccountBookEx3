@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
-import com.example.accountbookex3.activity.InsertActivity
 import com.example.accountbookex3.databinding.FragmentInsertFormBinding
 import com.example.accountbookex3.util.TextViewDatePickerCreator
 import com.example.accountbookex3.viewmodel.DbViewModel
@@ -19,8 +18,6 @@ import kotlinx.android.synthetic.main.fragment_insert_form.*
 
 class InsertFormFragment : Fragment() {
     private val TAG = "InsertFormFragmentLog"
-
-    private val attachedActivity by lazy { activity as InsertActivity }
 
     private val dbViewModel by lazy { ViewModelProvider(requireActivity()).get(DbViewModel::class.java) }
     private val insertViewModel by lazy { ViewModelProvider(requireActivity(), InsertViewModelFactory(dbViewModel)).get(InsertViewModel::class.java) }
