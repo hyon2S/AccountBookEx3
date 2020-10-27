@@ -15,6 +15,7 @@ import com.example.accountbookex3.util.TextViewDatePickerCreator
 import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModelFactory
+import kotlinx.android.synthetic.main.fragment_insert_form.*
 
 class InsertFormFragment : Fragment() {
     private val TAG = "InsertFormFragmentLog"
@@ -26,7 +27,7 @@ class InsertFormFragment : Fragment() {
 
     private lateinit var binding: FragmentInsertFormBinding
 
-    private val datePickerCreator by lazy { TextViewDatePickerCreator(requireActivity(), "datePicker") }
+    private val datePickerCreator by lazy { TextViewDatePickerCreator(requireActivity(), "datePicker", tv_date) }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +46,8 @@ class InsertFormFragment : Fragment() {
         Log.d(TAG, "데이터바인딩 세팅")
 
         binding.tvDate.setOnClickListener {
+            Log.d(TAG, "tvDate click")
             datePickerCreator.showDatePickerDialog()
         }
-        datePickerCreator.tvDate = binding.tvDate
     }
 }
