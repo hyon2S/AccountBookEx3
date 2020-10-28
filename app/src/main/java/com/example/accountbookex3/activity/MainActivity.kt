@@ -7,6 +7,7 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
 import com.example.accountbookex3.util.InsertFormActivityStarter
+import com.example.accountbookex3.util.UpdateActivityStarter
 
 /*
 * startActivity(intent) 관련 기능을 하는 구성요소들:
@@ -16,6 +17,7 @@ import com.example.accountbookex3.util.InsertFormActivityStarter
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivityLog"
     private val insertActivityStarter = InsertFormActivityStarter(this)
+    private val updateActivityStarter = UpdateActivityStarter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate()")
@@ -74,5 +76,10 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "DbViewModel test 생성")
         test.test()
 */
+    }
+
+    fun startUpdateActivity(date: String, index: Int) {
+        Log.d(TAG, "startUpdateActivity()")
+        updateActivityStarter.startActivity(date, index)
     }
 }
