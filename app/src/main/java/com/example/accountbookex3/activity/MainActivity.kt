@@ -68,6 +68,10 @@ class MainActivity : AppCompatActivity() {
     fun startInsertActivity() {
         Log.d(TAG, "startInsertActivity()")
         insertActivityStarter.startActivity()
+
+        // 버튼 눌러서 테스트 용
+        // startUpdateActivity("2020-10-26", 1)
+
         // DbViewModel 테스트
 /*
         val dbViewModel = ViewModelProvider(this).get(DbViewModel::class.java)
