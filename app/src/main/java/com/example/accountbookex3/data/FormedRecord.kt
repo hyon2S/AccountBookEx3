@@ -3,13 +3,16 @@ package com.example.accountbookex3.data
 import androidx.lifecycle.MutableLiveData
 import java.time.LocalDate
 
-class FormedRecord() {
+class FormedRecord
+    (date: String = LocalDate.now().toString(), isIncome: Boolean = true, amount: String = "0") {
     val date: MutableLiveData<String> = MutableLiveData()
     val isIncome: MutableLiveData<Boolean> = MutableLiveData()
     val amount: MutableLiveData<String> = MutableLiveData()
 
     init {
-        initProperties()
+        setDate(date)
+        setIsIncome(isIncome)
+        setAmount(amount)
     }
 
     fun setDate(newDate: String) {
@@ -24,13 +27,6 @@ class FormedRecord() {
     fun getDate(): String = date.value!!
     fun getIsIncome(): Boolean = isIncome.value!!
     fun getAmount(): String = amount.value!!
-
-    private fun initProperties(
-        date: String = LocalDate.now().toString(), isIncome: Boolean = true, amount: String = "0") {
-        setDate(date)
-        setIsIncome(isIncome)
-        setAmount(amount)
-    }
 
     override fun toString(): String =
         "${getDate()}, ${if (getIsIncome()) "수입" else "지출"}: ${getAmount()}"
