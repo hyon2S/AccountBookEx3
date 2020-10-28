@@ -9,7 +9,6 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.exception.RecordFormException
 import com.example.accountbookex3.fragment.InsertButtonFragment
 import com.example.accountbookex3.fragment.InsertFormFragment
-import com.example.accountbookex3.util.TextViewDatePickerCreator
 import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModelFactory
@@ -44,7 +43,6 @@ class InsertActivity : AppCompatActivity() {
         Log.d(TAG, "dbViewModel.insert()")
         try {
             insertViewModel.insert()
-//            dbViewModel.insert(insertViewModel.formedRecord)
 
             Toast.makeText(this, getString(R.string.insert_done_message), Toast.LENGTH_SHORT).show()
             finish()
