@@ -25,7 +25,7 @@ class DbViewModel: ViewModel() {
             repository.select(date, index)
 
     fun selectAll(): RealmResults<DateRecord> =
-        repository.selectAll()
+            repository.selectAll()
     // 진짜? 리턴하지 않고 변수로 갖고있다가 나중에 Rv의 list에 넣는다든지 할 수도 있지 않을까?
 
     fun delete(date: String, index: Int) { // DateRecord와 Record자체를 변수로 받을수도 있을듯..?
