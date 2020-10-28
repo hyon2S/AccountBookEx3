@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.data.FormedRecord
+import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.model.Repository
 import io.realm.Realm
 import io.realm.RealmResults
@@ -19,6 +20,9 @@ class DbViewModel: ViewModel() {
             repository.insert(formedRecord)
         }
     }
+
+    fun select(date: String, index: Int): Record =
+            repository.select(date, index)
 
     fun selectAll(): RealmResults<DateRecord> =
         repository.selectAll()

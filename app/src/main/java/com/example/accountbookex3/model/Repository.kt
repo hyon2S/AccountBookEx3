@@ -4,6 +4,7 @@ import com.example.accountbookex3.AccountBookApplication
 import com.example.accountbookex3.R
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.data.FormedRecord
+import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.exception.DateRecordNotFoundException
 import com.example.accountbookex3.exception.RecordFormException
 import io.realm.Realm
@@ -37,7 +38,12 @@ class Repository(val realm: Realm) {
     }
 
     fun selectAll(): RealmResults<DateRecord> =
-        dateRecordDao.selectAll()
+            dateRecordDao.selectAll()
+
+    fun select(date: String, index: Int): Record {
+        val dateRecord: DateRecord = dateRecordDao.select(date) ?: throw DateRecordNotFoundException(date)
+        return dateRecord.get(index)
+    }
 
     fun delete(date: String, index: Int) {
         // DateRecord의 list에서 빼낸 다음
