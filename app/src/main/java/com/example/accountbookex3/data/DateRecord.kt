@@ -35,6 +35,14 @@ open class DateRecord(
         // realm도 LinkedList 이런거 지원하면 좋을텐데.
     }
 
+    fun get(index: Int): Record {
+        try {
+            return list[index]!! // !!하는게 옳은 선택일까...?
+        } catch (e: IndexOutOfBoundsException) {
+            throw DateRecordListIndexOutOfBoundsException(date, index)
+        }
+    }
+
     fun removeAt(index: Int): Record {
         try {
             return list.removeAt(index)
