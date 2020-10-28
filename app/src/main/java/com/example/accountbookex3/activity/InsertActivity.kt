@@ -17,12 +17,14 @@ class InsertActivity : AppCompatActivity() {
     private val TAG = "InsertActivityLog"
 
     private val dbViewModel by lazy { ViewModelProvider(this).get(DbViewModel::class.java) }
-    private val insertViewModel by lazy { ViewModelProvider(this, InsertViewModelFactory(dbViewModel)).get(InsertViewModel::class.java) }
+    private lateinit var insertViewModel: InsertViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate()")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insert)
+
+        insertViewModel = ViewModelProvider(this, InsertViewModelFactory(dbViewModel)).get(InsertViewModel::class.java)
 
         attachFragment()
         Log.d(TAG, "fragment 붙임")
