@@ -28,7 +28,7 @@ class Repository(val realm: Realm) {
             formedRecord.getAmount().toInt()
         } catch (e: Exception) {
             throw RecordFormException(AccountBookApplication.applicationContext().resources.getString(
-                R.string.amount_is))
+                    R.string.amount_is))
         }
 
         val dateRecord: DateRecord = getDateRecord(date) // 날짜 정보를 얻어옴.
