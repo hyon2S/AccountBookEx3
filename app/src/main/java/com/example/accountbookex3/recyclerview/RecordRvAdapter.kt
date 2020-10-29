@@ -8,25 +8,26 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.databinding.RecyclerViewRecordBinding
 import com.example.accountbookex3.dragandswipe.ItemTouchHelperAdapter
+import com.example.accountbookex3.util.UpdateActivityStartInterface
 import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 
-class RecordRvAdapter(val date: String, data: OrderedRealmCollection<Record>, val dbViewModel: DbViewModel):
-    RealmRecyclerViewAdapter<Record, RecordRvViewHolder>(data, true, true)
-    , ItemTouchHelperAdapter
+class RecordRvAdapter
+(val date: String, data: OrderedRealmCollection<Record>, val dbViewModel: DbViewModel, private val updateAdapter: UpdateActivityStartInterface)
+    : RealmRecyclerViewAdapter<Record, RecordRvViewHolder>(data, true, true), ItemTouchHelperAdapter
 {
     private val TAG = "RecordRvAdapterLog"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordRvViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: RecyclerViewRecordBinding = DataBindingUtil.inflate(inflater, R.layout.recycler_view_record, parent, false)
-        return RecordRvViewHolder(binding)
+        return RecordRvViewHolder(binding, updateAdapter)
     }
 
     override fun onBindViewHolder(holder: RecordRvViewHolder, position: Int) {
         val record: Record = data?.get(position) ?: return
-        holder.bind(record)
+        holder.bind(record, date, position)
     }
 
     override fun onItemMove(fromPosition: Int, toPosition: Int) {

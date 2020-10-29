@@ -8,14 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
+import com.example.accountbookex3.activity.MainActivity
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.recyclerview.DateRvAdapter
+import com.example.accountbookex3.util.UpdateActivityStartInterface
 import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.fragment_recycler_view.*
 
-class RecyclerViewFragment : Fragment() {
+class RecyclerViewFragment : Fragment(), UpdateActivityStartInterface {
     private val TAG = "RecyclerViewFragmentLog"
+
+    private val attachedActivity by lazy { activity as MainActivity }
 
     private val dbViewModel by lazy { ViewModelProvider(requireActivity()).get(DbViewModel::class.java) }
     lateinit var data: RealmResults<DateRecord>
@@ -41,7 +45,11 @@ class RecyclerViewFragment : Fragment() {
         Log.d(TAG, "initRecyclerView()")
         rv_outer.apply {
             setHasFixedSize(true)
-            adapter = DateRvAdapter(data, dbViewModel)
+            adapter = DateRvAdapter(data, dbViewModel, this@RecyclerViewFragment)
         }
+    }
+
+    override fun startUpdateActivity(date: String, index: Int) {
+        attachedActivity.startUpdateActivity(date, index)
     }
 }
