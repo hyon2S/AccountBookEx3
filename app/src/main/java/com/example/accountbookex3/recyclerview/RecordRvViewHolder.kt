@@ -1,6 +1,5 @@
 package com.example.accountbookex3.recyclerview
 
-import android.view.MotionEvent
 import androidx.recyclerview.widget.RecyclerView
 import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.databinding.RecyclerViewRecordBinding
