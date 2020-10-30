@@ -1,5 +1,6 @@
 package com.example.accountbookex3.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.FormedRecord
 import com.example.accountbookex3.data.Record
@@ -11,6 +12,8 @@ import com.example.accountbookex3.data.Record
  * dbViewModel을 통해 갖고있는 정보를 db에 update하는 기능까지 가짐.
  */
 class UpdateViewModel(val dbViewModel: DbViewModel, val date: String, val index: Int): ViewModel() {
+    private val TAG = "UpdateViewModelLog"
+
     val formedRecord: FormedRecord
 
     init {
@@ -19,6 +22,7 @@ class UpdateViewModel(val dbViewModel: DbViewModel, val date: String, val index:
     }
 
     fun update() {
-//        dbViewModel.update(date, index, formedRecord)
+        Log.d(TAG, "update()")
+        dbViewModel.update(date, index, formedRecord)
     }
 }
