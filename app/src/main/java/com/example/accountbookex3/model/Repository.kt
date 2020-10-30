@@ -37,6 +37,15 @@ class Repository(val realm: Realm) {
         dateRecord.add(index, record)
     }
 
+    fun update(date: String, index: Int, formedRecord: FormedRecord) {
+        delete(date, index)
+        if (date == formedRecord.getDate())
+            // 기존 인덱스 자리에 그대로 대체
+            insert(formedRecord, index)
+        else
+            insert(formedRecord)
+    }
+
     fun selectAll(): RealmResults<DateRecord> =
             dateRecordDao.selectAll()
 
