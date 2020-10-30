@@ -14,7 +14,7 @@ class Repository(val realm: Realm) {
     private val dateRecordDao = DateRecordDao(realm)
     private val recordDao = RecordDao(realm)
 
-    fun insert(formedRecord: FormedRecord) {
+    fun insert(formedRecord: FormedRecord, index: Int = 0) {
         val date: String = try {
             formedRecord.getDate()
         } catch (e: Exception) {
@@ -34,7 +34,7 @@ class Repository(val realm: Realm) {
 
         val dateRecord: DateRecord = getDateRecord(date) // 날짜 정보를 얻어옴.
         val record = recordDao.insert(isIncome, amount)
-        dateRecord.add(record)
+        dateRecord.add(index, record)
     }
 
     fun selectAll(): RealmResults<DateRecord> =
