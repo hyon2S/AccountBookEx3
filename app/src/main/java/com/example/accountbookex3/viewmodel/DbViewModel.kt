@@ -21,6 +21,12 @@ class DbViewModel: ViewModel() {
         }
     }
 
+    fun update(date: String, index: Int, formedRecord: FormedRecord) {
+        realm.executeTransaction {
+            repository.update(date, index, formedRecord)
+        }
+    }
+
     fun select(date: String, index: Int): Record =
             repository.select(date, index)
 
