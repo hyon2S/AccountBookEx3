@@ -21,18 +21,14 @@ open class DateRecord(
         return sb.toString()
     }
 
-    fun addAt(index: Int, record: Record) {
+    fun add(index: Int = 0, record: Record) {
+        // 같은 날짜 안에서는 최신 데이터를 앞으로 넣기
         try {
             list.add(index, record)
+            // realm도 LinkedList 이런거 지원하면 좋을텐데.
         } catch (e: IndexOutOfBoundsException) { // if index < 0 || index > size()
             throw DateRecordListIndexOutOfBoundsException(date, index)
         }
-    }
-
-    fun add(record: Record) {
-        // 같은 날짜 안에서는 최신 데이터를 앞으로 넣기
-        addAt(0, record)
-        // realm도 LinkedList 이런거 지원하면 좋을텐데.
     }
 
     fun get(index: Int): Record {

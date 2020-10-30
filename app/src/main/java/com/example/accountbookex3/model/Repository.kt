@@ -60,7 +60,7 @@ class Repository(val realm: Realm) {
         // fromIndex에서 빼내서
         val record = dateRecord.removeAt(fromIndex)
         // toIndex자리에 넣는다.
-        dateRecord.addAt(toIndex, record)
+        dateRecord.add(toIndex, record)
     }
 
     private fun getDateRecord(date: String): DateRecord {
