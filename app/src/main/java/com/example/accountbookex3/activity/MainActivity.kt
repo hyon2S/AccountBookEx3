@@ -43,10 +43,12 @@ class MainActivity : AppCompatActivity() {
 */
     }
 
+/*
     override fun onDestroy() {
         Log.d(TAG, "onDestroy()")
         super.onDestroy()
     }
+*/
 
     private fun attachFragment() {
         Log.d(TAG, "attachFragment()")
