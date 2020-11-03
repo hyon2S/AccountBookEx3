@@ -32,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/tv_income_outcome"
-            app:layout_constraintRight_toLeftOf="@id/tv_handle"
+            app:layout_constraintRight_toLeftOf="@id/iv_delete"
             >
             <TextView
                 style="@style/RvRecordTvAmount"
@@ -57,11 +57,13 @@
                 app:layout_constraintRight_toRightOf="parent"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <TextView
-            android:id="@+id/tv_handle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/handle"
+        <ImageView
+            style="@style/DeleteButton"
+            android:id="@+id/iv_delete"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/delete_button_image"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/csl_amount"

@@ -65,4 +65,8 @@
     <style name="FragmentButton">
         <item name="android:padding">15sp</item>
     </style>
+
+    <style name="DeleteButton">
+        <item name="android:padding">7sp</item>
+    </style>
 </resources>
