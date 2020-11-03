@@ -21,7 +21,9 @@ class InsertFormFragment : Fragment() {
 
     private lateinit var binding: FragmentInsertFormBinding
 
-    private val datePickerCreator by lazy { TextViewDatePickerCreator(requireActivity(), "datePicker", tv_date) }
+    private val DATE_PICKER_FRAG_TAG = "datePicker"
+
+    private val datePickerCreator by lazy { TextViewDatePickerCreator(requireActivity(), DATE_PICKER_FRAG_TAG, tv_date) }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
