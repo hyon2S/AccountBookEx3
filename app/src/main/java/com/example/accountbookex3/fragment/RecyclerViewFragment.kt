@@ -25,8 +25,8 @@ class RecyclerViewFragment : Fragment(), EditHelper {
     lateinit var data: RealmResults<DateRecord>
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         Log.d(TAG, "onCreateView()")
         // Inflate the layout for this fragment
