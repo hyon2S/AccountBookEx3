@@ -21,6 +21,9 @@ import com.example.accountbookex3.viewmodel.DbViewModel
 * */
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivityLog"
+
+    private val DELETE_FRAG_TAG = "delete_fragment"
+
     private val insertActivityStarter = InsertFormActivityStarter(this)
     private val updateActivityStarter = UpdateActivityStarter(this)
 
