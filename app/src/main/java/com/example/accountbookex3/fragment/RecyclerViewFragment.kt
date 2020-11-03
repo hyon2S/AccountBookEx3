@@ -52,4 +52,8 @@ class RecyclerViewFragment : Fragment(), EditHelper {
     override fun startUpdateActivity(date: String, index: Int) {
         attachedActivity.startUpdateActivity(date, index)
     }
+
+    override fun startDelete(date: String, index: Int) {
+        attachedActivity.startDeletionAlertDialog(date, index)
+    }
 }

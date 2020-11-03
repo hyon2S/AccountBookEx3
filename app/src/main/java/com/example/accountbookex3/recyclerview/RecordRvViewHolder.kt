@@ -13,5 +13,8 @@ class RecordRvViewHolder(private val binding: RecyclerViewRecordBinding
         binding.root.setOnClickListener {
             editHelper.startUpdate(date, position)
         }
+        binding.ivDelete.setOnClickListener {
+            editHelper.startDelete(date, position)
+        }
     }
 }

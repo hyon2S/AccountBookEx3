@@ -16,7 +16,15 @@
 
     <!-- 레코드 저장하고 완료되었음을 알리는 메시지. -->
     <string name="insert_done_message">저장되었습니다.</string>
+    <string name="delete_done_message">삭제되었습니다.</string>
 
     <!-- 추가버튼에 쓸 문구 -->
     <string name="button_add">추가</string>
+
+    <!-- 레코드 삭제하기 전에 다시한번 확인하는 Dialog 문구 -->
+    <string name="confirm_delete">삭제하시겠습니까?</string>
+
+    <!-- AlertDialg의 예 아니오 -->
+    <string name="yes">예</string>
+    <string name="no">아니오</string>
 </resources>

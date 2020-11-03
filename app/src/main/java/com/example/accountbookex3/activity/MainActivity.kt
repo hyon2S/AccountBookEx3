@@ -1,13 +1,18 @@
 package com.example.accountbookex3.activity
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
+import com.example.accountbookex3.util.DeletionAlertDialogFragment
 import com.example.accountbookex3.util.InsertFormActivityStarter
 import com.example.accountbookex3.util.UpdateActivityStarter
+import com.example.accountbookex3.viewmodel.DbViewModel
 
 /*
 * startActivity(intent) 관련 기능을 하는 구성요소들:
@@ -18,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivityLog"
     private val insertActivityStarter = InsertFormActivityStarter(this)
     private val updateActivityStarter = UpdateActivityStarter(this)
+
+    private val dbViewModel by lazy { ViewModelProvider(this).get(DbViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate()")
@@ -87,5 +94,22 @@ class MainActivity : AppCompatActivity() {
     fun startUpdateActivity(date: String, index: Int) {
         Log.d(TAG, "startUpdateActivity()")
         updateActivityStarter.startActivity(date, index)
+    }
+
+    // AlertDialog 띄워서 yes면 지움
+    fun startDeletionAlertDialog(date: String, index: Int) {
+        Log.d(TAG, "startUpdateActivity()")
+        val positiveCallback = DialogInterface.OnClickListener{ dialog, which ->
+            Log.d(TAG, "positive click")
+            dbViewModel.delete(date, index)
+            Toast.makeText(this, R.string.delete_done_message, Toast.LENGTH_SHORT).show()
+        }
+        val negativeCallback = DialogInterface.OnClickListener{ dialog, which ->
+            Log.d(TAG, "negative click")
+            // 아무것도 안함
+        }
+        val dialog = DeletionAlertDialogFragment(positiveCallback, negativeCallback)
+        dialog.retainInstance = true
+        dialog.show(supportFragmentManager, DELETE_FRAG_TAG)
     }
 }
