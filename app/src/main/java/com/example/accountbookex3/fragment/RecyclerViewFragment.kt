@@ -11,12 +11,12 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.activity.MainActivity
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.recyclerview.DateRvAdapter
-import com.example.accountbookex3.util.UpdateActivityStartInterface
+import com.example.accountbookex3.util.EditHelper
 import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.fragment_recycler_view.*
 
-class RecyclerViewFragment : Fragment(), UpdateActivityStartInterface {
+class RecyclerViewFragment : Fragment(), EditHelper {
     private val TAG = "RecyclerViewFragmentLog"
 
     private val attachedActivity by lazy { activity as MainActivity }

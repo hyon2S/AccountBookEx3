@@ -5,13 +5,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.databinding.RecyclerViewDateBinding
 import com.example.accountbookex3.dragandswipe.ItemTouchHelperCallback
-import com.example.accountbookex3.util.UpdateActivityStartInterface
+import com.example.accountbookex3.util.EditHelper
 import com.example.accountbookex3.viewmodel.DbViewModel
 
 class DateRvViewHolder(private val binding: RecyclerViewDateBinding): RecyclerView.ViewHolder(binding.root) {
-    fun bind(dateRecord: DateRecord, dbViewModel: DbViewModel, updateAdapter: UpdateActivityStartInterface) {
+    fun bind(dateRecord: DateRecord, dbViewModel: DbViewModel, editHelper: EditHelper) {
         binding.dateRecord = dateRecord
-        val recordAdapter = RecordRvAdapter(dateRecord.date, dateRecord.list, dbViewModel, updateAdapter)
+        val recordAdapter = RecordRvAdapter(dateRecord.date, dateRecord.list, dbViewModel, editHelper)
         binding.rvInner.apply {
             setHasFixedSize(true)
             adapter = recordAdapter
