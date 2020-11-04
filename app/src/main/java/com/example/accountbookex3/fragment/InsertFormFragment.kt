@@ -6,13 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.databinding.FragmentInsertFormBinding
-import com.example.accountbookex3.util.TextViewDatePickerCreator
+import com.example.accountbookex3.datepicker.DatePickerHelper
 import com.example.accountbookex3.viewmodel.InsertViewModel
-import kotlinx.android.synthetic.main.fragment_insert_form.*
 
 class InsertFormFragment : Fragment() {
     private val TAG = "InsertFormFragmentLog"
@@ -20,10 +20,6 @@ class InsertFormFragment : Fragment() {
     private val insertViewModel by lazy { ViewModelProvider(requireActivity()).get(InsertViewModel::class.java) }
 
     private lateinit var binding: FragmentInsertFormBinding
-
-    private val DATE_PICKER_FRAG_TAG = "datePicker"
-
-    private val datePickerCreator by lazy { TextViewDatePickerCreator(requireActivity(), DATE_PICKER_FRAG_TAG, tv_date) }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +39,7 @@ class InsertFormFragment : Fragment() {
 
         binding.tvDate.setOnClickListener {
             Log.d(TAG, "tvDate click")
-            datePickerCreator.showDatePickerDialog()
+            (activity as DatePickerHelper).chooseDate(it as TextView)
         }
     }
 }

@@ -5,14 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.databinding.FragmentInsertFormBinding
-import com.example.accountbookex3.util.TextViewDatePickerCreator
+import com.example.accountbookex3.datepicker.DatePickerHelper
 import com.example.accountbookex3.viewmodel.*
-import kotlinx.android.synthetic.main.fragment_insert_form.*
 
 /*
 * 날짜 등등을 입력하는 입력 폼 부분.
@@ -26,8 +26,6 @@ class UpdateFormFragment : Fragment() {
     private val updateViewModel by lazy { ViewModelProvider(requireActivity()).get(UpdateViewModel::class.java) }
 
     private lateinit var binding: FragmentInsertFormBinding
-
-    private val datePickerCreator by lazy { TextViewDatePickerCreator(requireActivity(), "datePicker", tv_date) }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +45,7 @@ class UpdateFormFragment : Fragment() {
 
         binding.tvDate.setOnClickListener {
             Log.d(TAG, "tvDate click")
-            datePickerCreator.showDatePickerDialog()
+            (activity as DatePickerHelper).chooseDate(it as TextView)
         }
     }
 }

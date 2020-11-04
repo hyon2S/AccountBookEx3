@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.widget.DatePicker
-import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.accountbookex3.AccountBookApplication
 import com.example.accountbookex3.R
@@ -19,32 +18,44 @@ import java.time.format.DateTimeParseException
 class DatePickerFragment(): DialogFragment(), DatePickerDialog.OnDateSetListener {
     private val TAG = "DatePickerFragmentLog"
 
-    var attachedTextView: TextView? = null
+    private var oldDate: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            oldDate = it.getString(OLD_DATE)
+        }
+    }
 
     /*
     * show() 직후, 화면회전 직후에 호출됨.
     * */
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         Log.d(TAG, "onCreateDialog()")
-        val date = updateDate()
-        return DatePickerDialog(context!!, this, date.year, date.monthValue - 1, date.dayOfMonth)
-    }
-
-    private fun updateDate(): LocalDate {
-        Log.d(TAG, "updateDate()")
         val date = try {
-            LocalDate.parse(attachedTextView?.text)
+            LocalDate.parse(oldDate)
         } catch (e: DateTimeParseException) {
             throw StringFormException(
                     AccountBookApplication.applicationContext().resources.getString(
                             R.string.date))
         }
-        Log.d(TAG, "date: ${date}")
-        return date
+        return DatePickerDialog(requireContext(), this, date.year, date.monthValue - 1, date.dayOfMonth)
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         Log.d(TAG, "onDateSet()")
-        attachedTextView?.text = LocalDate.of(year, month + 1, dayOfMonth).toString()
+        val newDate = LocalDate.of(year, month + 1, dayOfMonth)
+        (activity as DatePickerHelper).setTextView(newDate.toString())
+    }
+
+    companion object {
+        private const val OLD_DATE = "oldDate"
+        @JvmStatic
+        fun newInstance(oldDate: String) =
+                DatePickerFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(OLD_DATE, oldDate)
+                    }
+                }
     }
 }
