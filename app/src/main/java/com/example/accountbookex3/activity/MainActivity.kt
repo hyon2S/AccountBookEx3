@@ -11,7 +11,6 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
 import com.example.accountbookex3.util.DeletionAlertDialogFragment
-import com.example.accountbookex3.util.UpdateActivityStarter
 import com.example.accountbookex3.viewmodel.DbViewModel
 
 /*
@@ -23,8 +22,6 @@ class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivityLog"
 
     private val DELETE_FRAG_TAG = "delete_fragment"
-
-    private val updateActivityStarter = UpdateActivityStarter(this)
 
     private val dbViewModel by lazy { ViewModelProvider(this).get(DbViewModel::class.java) }
 
@@ -96,7 +93,12 @@ class MainActivity : AppCompatActivity() {
 
     fun startUpdateActivity(date: String, index: Int) {
         Log.d(TAG, "startUpdateActivity()")
-        updateActivityStarter.startActivity(date, index)
+        val updateIntent = Intent(this, UpdateActivity::class.java)
+        updateIntent.apply {
+            putExtra("date", date)
+            putExtra("index", index)
+        }
+        startActivity(updateIntent)
     }
 
     // AlertDialog 띄워서 yes면 지움
