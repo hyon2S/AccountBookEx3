@@ -1,6 +1,7 @@
 package com.example.accountbookex3.activity
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +11,6 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
 import com.example.accountbookex3.util.DeletionAlertDialogFragment
-import com.example.accountbookex3.util.InsertFormActivityStarter
 import com.example.accountbookex3.util.UpdateActivityStarter
 import com.example.accountbookex3.viewmodel.DbViewModel
 
@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     private val DELETE_FRAG_TAG = "delete_fragment"
 
-    private val insertActivityStarter = InsertFormActivityStarter(this)
     private val updateActivityStarter = UpdateActivityStarter(this)
 
     private val dbViewModel by lazy { ViewModelProvider(this).get(DbViewModel::class.java) }
@@ -79,7 +78,8 @@ class MainActivity : AppCompatActivity() {
     * */
     fun startInsertActivity() {
         Log.d(TAG, "startInsertActivity()")
-        insertActivityStarter.startActivity()
+        val insertIntent = Intent(this, InsertActivity::class.java)
+        startActivity(insertIntent)
 
         // 버튼 눌러서 테스트 용
         // startUpdateActivity("2020-10-26", 1)
