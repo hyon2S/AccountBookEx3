@@ -1,6 +1,5 @@
 package com.example.accountbookex3.activity
 
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,13 +11,14 @@ import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
 import com.example.accountbookex3.edit.DeletionAlertDialogFragment
 import com.example.accountbookex3.database.DbViewModel
+import com.example.accountbookex3.edit.DeleteDialogHelper
 
 /*
 * startActivity(intent) 관련 기능을 하는 구성요소들:
 * private val insertActivityStarter
 * private fun attachFragment()
 * */
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DeleteDialogHelper {
     private val TAG = "MainActivityLog"
 
     private val DELETE_FRAG_TAG = "delete_fragment"
@@ -103,18 +103,17 @@ class MainActivity : AppCompatActivity() {
 
     // AlertDialog 띄워서 yes면 지움
     fun startDeletionAlertDialog(date: String, index: Int) {
-        Log.d(TAG, "startUpdateActivity()")
-        val positiveCallback = DialogInterface.OnClickListener{ dialog, which ->
-            Log.d(TAG, "positive click")
-            dbViewModel.delete(date, index)
-            Toast.makeText(this, R.string.delete_done_message, Toast.LENGTH_SHORT).show()
-        }
-        val negativeCallback = DialogInterface.OnClickListener{ dialog, which ->
-            Log.d(TAG, "negative click")
-            // 아무것도 안함
-        }
-        val dialog = DeletionAlertDialogFragment(positiveCallback, negativeCallback)
-        dialog.retainInstance = true
-        dialog.show(supportFragmentManager, DELETE_FRAG_TAG)
+        Log.d(TAG, "startDeletionAlertDialog()")
+        val dialog = DeletionAlertDialogFragment.newInstance(date, index)
+                .show(supportFragmentManager, DELETE_FRAG_TAG)
+        // dialog.retainInstance = true
+        // dialog.show(supportFragmentManager, DELETE_FRAG_TAG)
+    }
+
+    // override DeleteDialogHelper
+    override fun delete(date: String, index: Int) {
+        Log.d(TAG, "delete(${date}, ${index})")
+        dbViewModel.delete(date, index)
+        Toast.makeText(this, R.string.delete_done_message, Toast.LENGTH_SHORT).show()
     }
 }
