@@ -55,6 +55,6 @@ class RecyclerViewFragment : Fragment(), EditHelper {
 
     override fun startDelete(date: String, index: Int) {
         Log.d(TAG, "startDelete()")
-        attachedActivity.startDeletionAlertDialog(date, index)
+        attachedActivity.startDeleteAlertDialog(date, index)
     }
 }
