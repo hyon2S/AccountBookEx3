@@ -12,7 +12,7 @@ import com.example.accountbookex3.R
 * Fragment는 기본생성자 써야된다고 하는데, Fragment한테 db 접근 권한을 줄 게 아니면 매개변수 없이 하는 방법을 도저히 모르겠어서...
 * 호출하는 쪽에서 retainInstance = true 설정 하고 매개변수로 전달하는 것으로 함.
 * */
-class DeletionAlertDialogFragment(): DialogFragment() {
+class DeleteAlertDialogFragment(): DialogFragment() {
     private var date: String? = null
     private var index: Int? = null
 
@@ -42,7 +42,7 @@ class DeletionAlertDialogFragment(): DialogFragment() {
 
         @JvmStatic
         fun newInstance(date: String, index: Int) =
-                DeletionAlertDialogFragment().apply {
+                DeleteAlertDialogFragment().apply {
                     arguments = Bundle().apply {
                         putString(DATE, date)
                         putInt(INDEX, index)

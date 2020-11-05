@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
-import com.example.accountbookex3.edit.DeletionAlertDialogFragment
+import com.example.accountbookex3.edit.DeleteAlertDialogFragment
 import com.example.accountbookex3.database.DbViewModel
 import com.example.accountbookex3.edit.DeleteDialogHelper
 
@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper {
     // AlertDialog 띄워서 yes면 지움
     fun startDeletionAlertDialog(date: String, index: Int) {
         Log.d(TAG, "startDeletionAlertDialog()")
-        val dialog = DeletionAlertDialogFragment.newInstance(date, index)
+        val dialog = DeleteAlertDialogFragment.newInstance(date, index)
                 .show(supportFragmentManager, DELETE_FRAG_TAG)
         // dialog.retainInstance = true
         // dialog.show(supportFragmentManager, DELETE_FRAG_TAG)
