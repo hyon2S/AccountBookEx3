@@ -30,6 +30,8 @@ class InsertActivity : AppCompatActivity(), DatePickerHelper {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insert)
 
+        // attachFragment()에서 InsertActivity에 붙일 Fragment를 만들기전에 insertViewModel이 이미 만들어져야함
+        // lazy 초기화하지말것
         insertViewModel = ViewModelProvider(this, InsertViewModelFactory(dbViewModel)).get(InsertViewModel::class.java)
 
         attachFragment()
