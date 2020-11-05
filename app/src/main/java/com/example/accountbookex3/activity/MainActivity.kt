@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
-import com.example.accountbookex3.util.DeletionAlertDialogFragment
-import com.example.accountbookex3.viewmodel.DbViewModel
+import com.example.accountbookex3.edit.DeletionAlertDialogFragment
+import com.example.accountbookex3.database.DbViewModel
 
 /*
 * startActivity(intent) 관련 기능을 하는 구성요소들:

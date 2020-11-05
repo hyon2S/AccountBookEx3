@@ -12,10 +12,10 @@ import com.example.accountbookex3.datepicker.DatePickerHelper
 import com.example.accountbookex3.exception.RecordFormException
 import com.example.accountbookex3.fragment.InsertButtonFragment
 import com.example.accountbookex3.fragment.InsertFormFragment
-import com.example.accountbookex3.viewmodel.DatePickerViewModel
-import com.example.accountbookex3.viewmodel.DbViewModel
-import com.example.accountbookex3.viewmodel.InsertViewModel
-import com.example.accountbookex3.viewmodel.InsertViewModelFactory
+import com.example.accountbookex3.datepicker.DatePickerViewModel
+import com.example.accountbookex3.database.DbViewModel
+import com.example.accountbookex3.edit.InsertViewModel
+import com.example.accountbookex3.edit.InsertViewModelFactory
 
 class InsertActivity : AppCompatActivity(), DatePickerHelper {
     private val TAG = "InsertActivityLog"

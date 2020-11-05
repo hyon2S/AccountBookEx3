@@ -11,8 +11,8 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.activity.MainActivity
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.recyclerview.DateRvAdapter
-import com.example.accountbookex3.util.EditHelper
-import com.example.accountbookex3.viewmodel.DbViewModel
+import com.example.accountbookex3.edit.EditHelper
+import com.example.accountbookex3.database.DbViewModel
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.fragment_recycler_view.*
 

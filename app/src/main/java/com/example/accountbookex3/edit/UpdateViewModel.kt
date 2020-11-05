@@ -1,9 +1,10 @@
-package com.example.accountbookex3.viewmodel
+package com.example.accountbookex3.edit
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.FormedRecord
 import com.example.accountbookex3.data.Record
+import com.example.accountbookex3.database.DbViewModel
 
 /*
  * UpdateActivity의 데이터들을 관리하는 역할을 함.

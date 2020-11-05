@@ -8,8 +8,8 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.databinding.RecyclerViewRecordBinding
 import com.example.accountbookex3.dragandswipe.ItemTouchHelperAdapter
-import com.example.accountbookex3.util.EditHelper
-import com.example.accountbookex3.viewmodel.DbViewModel
+import com.example.accountbookex3.edit.EditHelper
+import com.example.accountbookex3.database.DbViewModel
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 

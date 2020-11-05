@@ -1,4 +1,4 @@
-package com.example.accountbookex3.util
+package com.example.accountbookex3.edit
 
 /*
 * update기능, delete기능 정의

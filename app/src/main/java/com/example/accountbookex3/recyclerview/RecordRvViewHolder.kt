@@ -3,7 +3,7 @@ package com.example.accountbookex3.recyclerview
 import androidx.recyclerview.widget.RecyclerView
 import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.databinding.RecyclerViewRecordBinding
-import com.example.accountbookex3.util.EditHelper
+import com.example.accountbookex3.edit.EditHelper
 
 class RecordRvViewHolder(private val binding: RecyclerViewRecordBinding
  , private val editHelper: EditHelper)

@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.databinding.RecyclerViewDateBinding
 import com.example.accountbookex3.dragandswipe.ItemTouchHelperCallback
-import com.example.accountbookex3.util.EditHelper
-import com.example.accountbookex3.viewmodel.DbViewModel
+import com.example.accountbookex3.edit.EditHelper
+import com.example.accountbookex3.database.DbViewModel
 
 class DateRvViewHolder(private val binding: RecyclerViewDateBinding): RecyclerView.ViewHolder(binding.root) {
     fun bind(dateRecord: DateRecord, dbViewModel: DbViewModel, editHelper: EditHelper) {

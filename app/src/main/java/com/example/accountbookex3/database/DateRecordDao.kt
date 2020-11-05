@@ -1,4 +1,4 @@
-package com.example.accountbookex3.model
+package com.example.accountbookex3.database
 
 import com.example.accountbookex3.data.DateRecord
 import io.realm.Realm

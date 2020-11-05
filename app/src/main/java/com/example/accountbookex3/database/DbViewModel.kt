@@ -1,11 +1,11 @@
-package com.example.accountbookex3.viewmodel
+package com.example.accountbookex3.database
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.data.FormedRecord
 import com.example.accountbookex3.data.Record
-import com.example.accountbookex3.model.Repository
+import com.example.accountbookex3.database.Repository
 import io.realm.Realm
 import io.realm.RealmResults
 

@@ -1,7 +1,6 @@
 package com.example.accountbookex3.datepicker
 
 import android.widget.TextView
-import com.example.accountbookex3.viewmodel.DatePickerViewModel
 
 /*
 * TextView에 DatePickerDialog를 이용해서 날짜를 선택하고 다시 TextView의 text에 선택한 날짜를 set하는 것을 도와줌.
