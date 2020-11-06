@@ -104,10 +104,8 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper {
     // AlertDialog 띄워서 yes면 지움
     fun startDeleteAlertDialog(date: String, index: Int) {
         Log.d(TAG, "startDeleteAlertDialog()")
-        val dialog = DeleteAlertDialogFragment.newInstance(date, index)
-                .show(supportFragmentManager, DELETE_FRAG_TAG)
-        // dialog.retainInstance = true
-        // dialog.show(supportFragmentManager, DELETE_FRAG_TAG)
+        DeleteAlertDialogFragment.newInstance(date, index)
+            .show(supportFragmentManager, DELETE_FRAG_TAG)
     }
 
     // override DeleteDialogHelper
