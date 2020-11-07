@@ -7,7 +7,7 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.databinding.RecyclerViewDateBinding
 import com.example.accountbookex3.edit.EditHelper
-import com.example.accountbookex3.database.DbViewModel
+import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 

@@ -3,7 +3,7 @@ package com.example.accountbookex3.test
 import android.util.Log
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.data.FormedRecord
-import com.example.accountbookex3.database.DbViewModel
+import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.RealmResults
 
 /*

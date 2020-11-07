@@ -10,7 +10,7 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
 import com.example.accountbookex3.edit.DeleteAlertDialogFragment
-import com.example.accountbookex3.database.DbViewModel
+import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.edit.DeleteDialogHelper
 
 /*

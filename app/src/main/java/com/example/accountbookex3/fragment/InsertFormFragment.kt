@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.databinding.FragmentInsertFormBinding
 import com.example.accountbookex3.datepicker.DatePickerHelper
-import com.example.accountbookex3.edit.InsertViewModel
+import com.example.accountbookex3.viewmodel.InsertViewModel
 
 class InsertFormFragment : Fragment() {
     private val TAG = "InsertFormFragmentLog"

@@ -1,8 +1,7 @@
-package com.example.accountbookex3.edit
+package com.example.accountbookex3.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.accountbookex3.database.DbViewModel
 import java.lang.IllegalArgumentException
 
 /*

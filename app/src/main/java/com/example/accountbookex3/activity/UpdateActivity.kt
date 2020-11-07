@@ -7,12 +7,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
-import com.example.accountbookex3.database.DbViewModel
+import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.datepicker.DatePickerFragment
 import com.example.accountbookex3.datepicker.DatePickerHelper
-import com.example.accountbookex3.datepicker.DatePickerViewModel
-import com.example.accountbookex3.edit.UpdateViewModel
-import com.example.accountbookex3.edit.UpdateViewModelFactory
+import com.example.accountbookex3.viewmodel.DatePickerViewModel
+import com.example.accountbookex3.viewmodel.UpdateViewModel
+import com.example.accountbookex3.viewmodel.UpdateViewModelFactory
 import com.example.accountbookex3.exception.RecordFormException
 import com.example.accountbookex3.fragment.UpdateButtonFragment
 import com.example.accountbookex3.fragment.UpdateFormFragment

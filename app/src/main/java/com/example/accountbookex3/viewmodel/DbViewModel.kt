@@ -1,4 +1,4 @@
-package com.example.accountbookex3.database
+package com.example.accountbookex3.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

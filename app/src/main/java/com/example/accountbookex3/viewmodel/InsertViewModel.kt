@@ -1,8 +1,7 @@
-package com.example.accountbookex3.edit
+package com.example.accountbookex3.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.FormedRecord
-import com.example.accountbookex3.database.DbViewModel
 
 class InsertViewModel(val dbViewModel: DbViewModel): ViewModel() {
     val formedRecord = FormedRecord()

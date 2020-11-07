@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.databinding.FragmentInsertFormBinding
 import com.example.accountbookex3.datepicker.DatePickerHelper
-import com.example.accountbookex3.edit.UpdateViewModel
+import com.example.accountbookex3.viewmodel.UpdateViewModel
 
 /*
 * 날짜 등등을 입력하는 입력 폼 부분.
