@@ -27,4 +27,7 @@
     <!-- AlertDialg의 예 아니오 -->
     <string name="yes">예</string>
     <string name="no">아니오</string>
+
+    <!-- 화면에 표시할 내역 기간 중에 '~' -->
+    <string name="tilde">~</string>
 </resources>

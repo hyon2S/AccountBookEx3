@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
@@ -12,16 +13,21 @@ import com.example.accountbookex3.fragment.RecyclerViewFragment
 import com.example.accountbookex3.edit.DeleteAlertDialogFragment
 import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.edit.DeleteDialogHelper
+import com.example.accountbookex3.datepicker.DatePickerFragment
+import com.example.accountbookex3.datepicker.DatePickerHelper
+import com.example.accountbookex3.viewmodel.DatePickerViewModel
+import com.example.accountbookex3.fragment.DateFragment
 
 /*
 * startActivity(intent) 관련 기능을 하는 구성요소들:
 * private val insertActivityStarter
 * private fun attachFragment()
 * */
-class MainActivity : AppCompatActivity(), DeleteDialogHelper {
+class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
     private val TAG = "MainActivityLog"
 
     private val DELETE_FRAG_TAG = "delete_fragment"
+    private val DATE_PICKER_FRAG_TAG = "datePickerTag"
 
     private val dbViewModel by lazy { ViewModelProvider(this).get(DbViewModel::class.java) }
 
@@ -62,10 +68,13 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper {
                 supportFragmentManager.findFragmentById(R.id.csl_recycler_view) as RecyclerViewFragment? ?: RecyclerViewFragment()
         val btnFragment: MainButtonFragment =
                 supportFragmentManager.findFragmentById(R.id.csl_buttons) as MainButtonFragment? ?: MainButtonFragment()
+        val dateFragment: DateFragment =
+                supportFragmentManager.findFragmentById(R.id.csl_date) as DateFragment? ?: DateFragment()
 
         supportFragmentManager.beginTransaction()
                 .replace(R.id.csl_recycler_view, rvFragment)
                 .replace(R.id.csl_buttons, btnFragment)
+                .replace(R.id.csl_date, dateFragment)
                 .commit()
         Log.d(TAG, "프래그먼트 붙임")
     }
@@ -113,5 +122,23 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper {
         Log.d(TAG, "delete(${date}, ${index})")
         dbViewModel.delete(date, index)
         Toast.makeText(this, R.string.delete_done_message, Toast.LENGTH_SHORT).show()
+    }
+
+    // DatePickerHelper 구현 항목들
+    // InsertActivity와 완전 똑같음.
+    override val datePickerViewModel by lazy { ViewModelProvider(this).get(DatePickerViewModel::class.java) }
+
+    override fun chooseDate(textView: TextView) {
+        datePickerViewModel.textView = textView // 화면 회전하면 일반 변수는 초기화되니까 뷰모델에 저장해둠
+        val oldDate: String = textView.text.toString()
+        DatePickerFragment.newInstance(oldDate).show(supportFragmentManager, DATE_PICKER_FRAG_TAG)
+    }
+
+    /*
+    * DatePickerFragment를 이용해 날짜를 선택하고나면
+    * DatePickerFragment의 onDateSet에 의해 호출됨
+    * */
+    override fun setTextView(newDate: String) {
+        datePickerViewModel.setTextView(newDate)
     }
 }
