@@ -83,12 +83,4 @@ class InsertActivity : AppCompatActivity(), DatePickerHelper {
         val oldDate: String = textView.text.toString()
         DatePickerFragment.newInstance(oldDate).show(supportFragmentManager, DATE_PICKER_FRAG_TAG)
     }
-
-    /*
-    * DatePickerFragment를 이용해 날짜를 선택하고나면
-    * DatePickerFragment의 onDateSet에 의해 호출됨
-    * */
-    override fun setTextView(newDate: String) {
-        datePickerViewModel.setTextView(newDate)
-    }
 }

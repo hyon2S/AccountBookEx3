@@ -10,6 +10,10 @@ import androidx.lifecycle.ViewModel
 class DatePickerViewModel: ViewModel() {
     var textView: TextView? = null
 
+    /*
+    * DatePickerFragment를 이용해 날짜를 선택하고나면
+    * DatePickerFragment의 onDateSet에 의해 호출됨
+    * */
     fun setTextView(newDate: String) {
         textView?.text = newDate
     }

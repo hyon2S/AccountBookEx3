@@ -86,8 +86,4 @@ class UpdateActivity : AppCompatActivity(), DatePickerHelper {
         val oldDate: String = textView.text.toString()
         DatePickerFragment.newInstance(oldDate).show(supportFragmentManager, DATE_PICKER_FRAG_TAG)
     }
-
-    override fun setTextView(newDate: String) {
-        datePickerViewModel.setTextView(newDate)
-    }
 }

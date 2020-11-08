@@ -12,5 +12,4 @@ interface DatePickerHelper {
     val datePickerViewModel: DatePickerViewModel
 
     fun chooseDate(textView: TextView)
-    fun setTextView(newDate: String)
 }
