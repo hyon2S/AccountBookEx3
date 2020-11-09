@@ -49,7 +49,7 @@ class DatePickerFragment(): DialogFragment(), DatePickerDialog.OnDateSetListener
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         Log.d(TAG, "onDateSet()")
         val newDate = LocalDate.of(year, month + 1, dayOfMonth)
-        datePickerViewModel.setTextView(newDate.toString())
+        datePickerViewModel.setDate(newDate.toString())
     }
 
     companion object {

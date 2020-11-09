@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
@@ -37,9 +36,12 @@ class InsertFormFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         Log.d(TAG, "데이터바인딩 세팅")
 
+        val callback: (String) -> Unit =
+                { newDate -> insertViewModel.formedRecord.setDate(newDate) }
+
         binding.tvDate.setOnClickListener {
             Log.d(TAG, "tvDate click")
-            (activity as DatePickerHelper).chooseDate(it as TextView)
+            (activity as DatePickerHelper).chooseDate(insertViewModel.formedRecord.getDate(), callback)
         }
     }
 }

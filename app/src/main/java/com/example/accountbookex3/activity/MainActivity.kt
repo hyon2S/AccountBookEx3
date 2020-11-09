@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
@@ -128,9 +127,8 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
     // InsertActivity와 완전 똑같음.
     override val datePickerViewModel by lazy { ViewModelProvider(this).get(DatePickerViewModel::class.java) }
 
-    override fun chooseDate(textView: TextView) {
-        datePickerViewModel.textView = textView // 화면 회전하면 일반 변수는 초기화되니까 뷰모델에 저장해둠
-        val oldDate: String = textView.text.toString()
+    override fun chooseDate(oldDate: String, callback: (String) -> Unit) {
+        datePickerViewModel.callback = callback
         DatePickerFragment.newInstance(oldDate).show(supportFragmentManager, DATE_PICKER_FRAG_TAG)
     }
 }

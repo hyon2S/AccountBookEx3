@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
@@ -40,12 +39,18 @@ class DateFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         Log.d(TAG, "데이터바인딩 세팅")
 
-        val datePickListener = View.OnClickListener{
-            Log.d(TAG, "tvDate click")
-            (activity as DatePickerHelper).chooseDate(it as TextView)
-        }
+        val fromDateCallback: (String) -> Unit =
+                { newDate -> dateViewModel.setFromDate(newDate) }
+        val toDateCallback: (String) -> Unit =
+                { newDate -> dateViewModel.setToDate(newDate) }
 
-        binding.tvFromDate.setOnClickListener(datePickListener)
-        binding.tvToDate.setOnClickListener(datePickListener)
+        binding.tvFromDate.setOnClickListener {
+            Log.d(TAG, "tvFromDate click")
+            (activity as DatePickerHelper).chooseDate(dateViewModel.getFromDate(), fromDateCallback)
+        }
+        binding.tvToDate.setOnClickListener {
+            Log.d(TAG, "tvToDate click")
+            (activity as DatePickerHelper).chooseDate(dateViewModel.getToDate(), toDateCallback)
+        }
     }
 }

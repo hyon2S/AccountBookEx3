@@ -4,17 +4,17 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModel
 
 /*
-* TextView를 보관하고있다가 text를 세팅해주는 역할.
+* callback을 보관하고 있다가 DatePickerFragment가 onDateSet()을 하면 콜백을 수행함.
 * DatePickerHelper와 같이 사용함
 * */
 class DatePickerViewModel: ViewModel() {
-    var textView: TextView? = null
+    var callback: ((String) -> Unit)? = null
 
     /*
     * DatePickerFragment를 이용해 날짜를 선택하고나면
     * DatePickerFragment의 onDateSet에 의해 호출됨
     * */
-    fun setTextView(newDate: String) {
-        textView?.text = newDate
+    fun setDate(newDate: String) {
+        callback?.invoke(newDate)
     }
 }
