@@ -17,4 +17,13 @@ class DateViewModel: ViewModel() {
                 .minusMonths(1).plusDays(1).toString()
         toDate.value = LocalDate.now().toString()
     }
+
+    fun getFromDate(): String = fromDate.value!!
+    fun setFromDate(date: String) {
+        fromDate.value = date
+    }
+    fun getToDate(): String = toDate.value!!
+    fun setToDate(date: String) {
+        toDate.value = date
+    }
 }
