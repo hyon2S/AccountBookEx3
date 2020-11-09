@@ -50,13 +50,13 @@ class Repository(val realm: Realm) {
             dateRecordDao.selectAll()
 
     fun select(date: String, index: Int): Record {
-        val dateRecord: DateRecord = dateRecordDao.select(date) ?: throw DateRecordNotFoundException(date)
+        val dateRecord: DateRecord = getDateRecordOrException(date)
         return dateRecord.get(index)
     }
 
     fun delete(date: String, index: Int) {
         // DateRecord의 list에서 빼낸 다음
-        val dateRecord: DateRecord = dateRecordDao.select(date) ?: throw DateRecordNotFoundException(date)
+        val dateRecord: DateRecord = getDateRecordOrException(date)
         val record = dateRecord.removeAt(index)
         // realm에서도 지우기
         recordDao.delete(record)
@@ -65,14 +65,19 @@ class Repository(val realm: Realm) {
     }
 
     fun moveRecord(date: String, fromIndex: Int, toIndex: Int) {
-        val dateRecord: DateRecord = dateRecordDao.select(date) ?: throw DateRecordNotFoundException(date)
+        val dateRecord: DateRecord = getDateRecordOrException(date)
         // fromIndex에서 빼내서
         val record = dateRecord.removeAt(fromIndex)
         // toIndex자리에 넣는다.
         dateRecord.add(toIndex, record)
     }
 
+    // 날짜로부터 DateRecord를 얻어오는데, 없으면 만들어서 얻어옴.
     private fun getDateRecord(date: String): DateRecord {
         return  dateRecordDao.select(date) ?: dateRecordDao.insert(date)
     }
+
+    // 날짜로부터 DateRecord를 얻어오는데, 없으면 예외를 발생시킴.
+    private fun getDateRecordOrException(date: String): DateRecord =
+            dateRecordDao.select(date) ?: throw DateRecordNotFoundException(date)
 }
