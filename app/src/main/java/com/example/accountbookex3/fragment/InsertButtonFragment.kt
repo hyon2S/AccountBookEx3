@@ -15,8 +15,8 @@ class InsertButtonFragment : Fragment() {
     private val attachedActivity by lazy { activity as InsertActivity }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         Log.d(TAG, "onCreateView()")
         // Inflate the layout for this fragment

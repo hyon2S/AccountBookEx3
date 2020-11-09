@@ -8,8 +8,8 @@ import java.lang.IndexOutOfBoundsException
 import java.lang.StringBuilder
 
 open class DateRecord(
-    @PrimaryKey var date: String = "",
-    var list: RealmList<Record> = RealmList()
+        @PrimaryKey var date: String = "",
+        var list: RealmList<Record> = RealmList()
 ): RealmObject() {
     override fun toString(): String {
         val sb = StringBuilder()

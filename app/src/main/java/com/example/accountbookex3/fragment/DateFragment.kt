@@ -31,7 +31,7 @@ class DateFragment : Fragment() {
         return binding.root
     }
 
-     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.dateViewModel = dateViewModel
         // executePendingBindings 없으면 회전하면 화면 초기화 됨.

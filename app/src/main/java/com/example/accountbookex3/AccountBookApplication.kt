@@ -32,13 +32,13 @@ class AccountBookApplication: Application() {
         Log.d(TAG, "realm init")
 
         val config = RealmConfiguration.Builder()
-            .name("accountrealm.realm")
-            .schemaVersion(0)
-            .migration(RealmMigration { realm, oldVersion, newVersion ->
-                // val schema = realm.schema
-                // if (oldVersion == ~~~)
-            })
-            .build()
+                .name("accountrealm.realm")
+                .schemaVersion(0)
+                .migration(RealmMigration { realm, oldVersion, newVersion ->
+                    // val schema = realm.schema
+                    // if (oldVersion == ~~~)
+                })
+                .build()
 
         Realm.setDefaultConfiguration(config)
 

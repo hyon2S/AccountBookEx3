@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
     fun startDeleteAlertDialog(date: String, index: Int) {
         Log.d(TAG, "startDeleteAlertDialog()")
         DeleteAlertDialogFragment.newInstance(date, index)
-            .show(supportFragmentManager, DELETE_FRAG_TAG)
+                .show(supportFragmentManager, DELETE_FRAG_TAG)
     }
 
     // override DeleteDialogHelper

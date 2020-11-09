@@ -18,8 +18,8 @@ class UpdateButtonFragment : Fragment() {
     private val attachedActivity by lazy { activity as UpdateActivity }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         Log.d(TAG, "onCreateView()")
         return inflater.inflate(R.layout.fragment_update_button, container, false)

@@ -12,7 +12,7 @@ import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 
 class DateRvAdapter(data: OrderedRealmCollection<DateRecord>, val dbViewModel: DbViewModel, private val editHelper: EditHelper):
-    RealmRecyclerViewAdapter<DateRecord, DateRvViewHolder>(data, true, true) {
+        RealmRecyclerViewAdapter<DateRecord, DateRvViewHolder>(data, true, true) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DateRvViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: RecyclerViewDateBinding = DataBindingUtil.inflate(inflater, R.layout.recycler_view_date, parent, false)

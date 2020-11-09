@@ -34,7 +34,7 @@ class UpdateActivity : AppCompatActivity(), DatePickerHelper {
         val index = intent.getIntExtra("index", -1)
 
         updateViewModel = ViewModelProvider(this, UpdateViewModelFactory(dbViewModel, date!!, index))
-            .get(UpdateViewModel::class.java)
+                .get(UpdateViewModel::class.java)
 
         attachFragment()
         Log.d(TAG, "fragment 붙임")
@@ -66,14 +66,14 @@ class UpdateActivity : AppCompatActivity(), DatePickerHelper {
     private fun attachFragment() {
         Log.d(TAG, "attachFragment()")
         val updateFormFragment: UpdateFormFragment =
-            supportFragmentManager.findFragmentById(R.id.csl_form) as UpdateFormFragment? ?: UpdateFormFragment()
+                supportFragmentManager.findFragmentById(R.id.csl_form) as UpdateFormFragment? ?: UpdateFormFragment()
         val btnFragment: UpdateButtonFragment =
-            supportFragmentManager.findFragmentById(R.id.csl_buttons) as UpdateButtonFragment? ?: UpdateButtonFragment()
+                supportFragmentManager.findFragmentById(R.id.csl_buttons) as UpdateButtonFragment? ?: UpdateButtonFragment()
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.csl_form, updateFormFragment)
-            .replace(R.id.csl_buttons, btnFragment)
-            .commit()
+                .replace(R.id.csl_form, updateFormFragment)
+                .replace(R.id.csl_buttons, btnFragment)
+                .commit()
         Log.d(TAG, "프래그먼트 붙임")
     }
 

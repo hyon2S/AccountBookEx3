@@ -6,7 +6,7 @@ import com.example.accountbookex3.databinding.RecyclerViewRecordBinding
 import com.example.accountbookex3.edit.EditHelper
 
 class RecordRvViewHolder(private val binding: RecyclerViewRecordBinding
- , private val editHelper: EditHelper)
+                         , private val editHelper: EditHelper)
     : RecyclerView.ViewHolder(binding.root) {
     fun bind(record: Record, date: String, position: Int) {
         binding.record = record // 데이터바인딩

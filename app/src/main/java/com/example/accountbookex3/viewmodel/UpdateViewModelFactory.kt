@@ -9,7 +9,7 @@ import java.lang.IllegalArgumentException
 * 의 4번 방법 이용해서 만듦
 * */
 class UpdateViewModelFactory
-    (private val dbViewModel: DbViewModel, private val date: String, private val index: Int)
+(private val dbViewModel: DbViewModel, private val date: String, private val index: Int)
     : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(UpdateViewModel::class.java)) {

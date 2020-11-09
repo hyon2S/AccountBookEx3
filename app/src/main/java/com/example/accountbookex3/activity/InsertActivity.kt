@@ -63,14 +63,14 @@ class InsertActivity : AppCompatActivity(), DatePickerHelper {
     private fun attachFragment() {
         Log.d(TAG, "attachFragment()")
         val insertFormFragment: InsertFormFragment =
-            supportFragmentManager.findFragmentById(R.id.csl_form) as InsertFormFragment? ?: InsertFormFragment()
+                supportFragmentManager.findFragmentById(R.id.csl_form) as InsertFormFragment? ?: InsertFormFragment()
         val btnFragment: InsertButtonFragment =
-            supportFragmentManager.findFragmentById(R.id.csl_buttons) as InsertButtonFragment? ?: InsertButtonFragment()
+                supportFragmentManager.findFragmentById(R.id.csl_buttons) as InsertButtonFragment? ?: InsertButtonFragment()
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.csl_form, insertFormFragment)
-            .replace(R.id.csl_buttons, btnFragment)
-            .commit()
+                .replace(R.id.csl_form, insertFormFragment)
+                .replace(R.id.csl_buttons, btnFragment)
+                .commit()
         Log.d(TAG, "프래그먼트 붙임")
     }
 
