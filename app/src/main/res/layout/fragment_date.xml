@@ -17,7 +17,7 @@
             android:id="@+id/tv_from_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{dateViewModel.fromDate}"
+            android:text="@{dateViewModel.fromDate.toString()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import java.time.LocalDate
 
 class FormedRecord(
-        date: String = LocalDate.now().toString(), isIncome: Boolean = true, amount: String = "0") {
-    val date: MutableLiveData<String> = MutableLiveData()
+        date: LocalDate = LocalDate.now(), isIncome: Boolean = true, amount: String = "0") {
+    val date: MutableLiveData<LocalDate> = MutableLiveData()
     val isIncome: MutableLiveData<Boolean> = MutableLiveData()
     val amount: MutableLiveData<String> = MutableLiveData()
 
@@ -15,7 +15,7 @@ class FormedRecord(
         setAmount(amount)
     }
 
-    fun setDate(newDate: String) {
+    fun setDate(newDate: LocalDate) {
         date.value = newDate
     }
     fun setIsIncome(newIsIncome: Boolean) {
@@ -24,7 +24,7 @@ class FormedRecord(
     fun setAmount(newAmount: String) {
         amount.value = newAmount
     }
-    fun getDate(): String = date.value!!
+    fun getDate(): LocalDate = date.value!!
     fun getIsIncome(): Boolean = isIncome.value!!
     fun getAmount(): String = amount.value!!
 

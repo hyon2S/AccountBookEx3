@@ -12,6 +12,7 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.databinding.FragmentDateBinding
 import com.example.accountbookex3.datepicker.DatePickerHelper
 import com.example.accountbookex3.viewmodel.DateViewModel
+import java.time.LocalDate
 
 /*
 * 어느 날짜부터 어느 날짜까지의 내역을 표시할지 보여줌.
@@ -39,9 +40,9 @@ class DateFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         Log.d(TAG, "데이터바인딩 세팅")
 
-        val fromDateCallback: (String) -> Unit =
+        val fromDateCallback: (LocalDate) -> Unit =
                 { newDate -> dateViewModel.setFromDate(newDate) }
-        val toDateCallback: (String) -> Unit =
+        val toDateCallback: (LocalDate) -> Unit =
                 { newDate -> dateViewModel.setToDate(newDate) }
 
         binding.tvFromDate.setOnClickListener {

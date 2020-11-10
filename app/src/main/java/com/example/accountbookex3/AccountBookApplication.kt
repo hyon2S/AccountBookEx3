@@ -33,10 +33,17 @@ class AccountBookApplication: Application() {
 
         val config = RealmConfiguration.Builder()
                 .name("accountrealm.realm")
-                .schemaVersion(0)
+                .schemaVersion(1)
                 .migration(RealmMigration { realm, oldVersion, newVersion ->
-                    // val schema = realm.schema
-                    // if (oldVersion == ~~~)
+                    val schema = realm.schema
+                    if (oldVersion == 0L) {
+                        val dateRecordSchema = schema.get("DateRecord")
+
+                        dateRecordSchema!!
+                                .removeField("date")
+                                .addField("date", Long::class.java)
+                                .addPrimaryKey("date")
+                    }
                 })
                 .build()
 

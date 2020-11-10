@@ -4,11 +4,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.databinding.RecyclerViewRecordBinding
 import com.example.accountbookex3.edit.EditHelper
+import java.time.LocalDate
 
 class RecordRvViewHolder(private val binding: RecyclerViewRecordBinding
                          , private val editHelper: EditHelper)
     : RecyclerView.ViewHolder(binding.root) {
-    fun bind(record: Record, date: String, position: Int) {
+    fun bind(record: Record, date: LocalDate, position: Int) {
         binding.record = record // 데이터바인딩
         binding.root.setOnClickListener {
             editHelper.startUpdate(date, position)

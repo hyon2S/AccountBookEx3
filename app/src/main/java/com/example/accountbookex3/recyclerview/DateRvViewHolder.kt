@@ -11,7 +11,7 @@ import com.example.accountbookex3.viewmodel.DbViewModel
 class DateRvViewHolder(private val binding: RecyclerViewDateBinding): RecyclerView.ViewHolder(binding.root) {
     fun bind(dateRecord: DateRecord, dbViewModel: DbViewModel, editHelper: EditHelper) {
         binding.dateRecord = dateRecord
-        val recordAdapter = RecordRvAdapter(dateRecord.date, dateRecord.list, dbViewModel, editHelper)
+        val recordAdapter = RecordRvAdapter(dateRecord.getDate(), dateRecord.list, dbViewModel, editHelper)
         binding.rvInner.apply {
             setHasFixedSize(true)
             adapter = recordAdapter

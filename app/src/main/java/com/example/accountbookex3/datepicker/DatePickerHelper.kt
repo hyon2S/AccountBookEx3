@@ -1,6 +1,7 @@
 package com.example.accountbookex3.datepicker
 
 import com.example.accountbookex3.viewmodel.DatePickerViewModel
+import java.time.LocalDate
 
 /*
 * DatePickerDialog를 이용해서 날짜를 선택하는 것을 도와줌.
@@ -24,5 +25,5 @@ interface DatePickerHelper {
     }
     * 반복을 줄일 수 있는 방법을 생각해봅시다.
     * */
-    fun chooseDate(oldDate: String, callback: (String) -> Unit)
+    fun chooseDate(oldDate: LocalDate, callback: (LocalDate) -> Unit)
 }

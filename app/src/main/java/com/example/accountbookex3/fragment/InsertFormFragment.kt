@@ -12,6 +12,7 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.databinding.FragmentInsertFormBinding
 import com.example.accountbookex3.datepicker.DatePickerHelper
 import com.example.accountbookex3.viewmodel.InsertViewModel
+import java.time.LocalDate
 
 class InsertFormFragment : Fragment() {
     private val TAG = "InsertFormFragmentLog"
@@ -36,7 +37,7 @@ class InsertFormFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         Log.d(TAG, "데이터바인딩 세팅")
 
-        val callback: (String) -> Unit =
+        val callback: (LocalDate) -> Unit =
                 { newDate -> insertViewModel.formedRecord.setDate(newDate) }
 
         binding.tvDate.setOnClickListener {

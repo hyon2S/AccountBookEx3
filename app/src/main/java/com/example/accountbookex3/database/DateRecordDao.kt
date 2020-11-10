@@ -7,10 +7,10 @@ import io.realm.Sort
 import io.realm.kotlin.where
 
 class DateRecordDao(val realm: Realm) {
-    fun select(date: String): DateRecord? =
+    fun select(date: Long): DateRecord? =
             realm.where<DateRecord>().equalTo("date", date).findFirst()
 
-    fun insert(date: String): DateRecord =
+    fun insert(date: Long): DateRecord =
             realm.createObject(DateRecord::class.java, date)
 
     fun selectAll(): RealmResults<DateRecord> =

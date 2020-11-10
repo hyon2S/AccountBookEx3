@@ -16,6 +16,7 @@ import com.example.accountbookex3.datepicker.DatePickerFragment
 import com.example.accountbookex3.datepicker.DatePickerHelper
 import com.example.accountbookex3.viewmodel.DatePickerViewModel
 import com.example.accountbookex3.fragment.DateFragment
+import java.time.LocalDate
 
 /*
 * startActivity(intent) 관련 기능을 하는 구성요소들:
@@ -99,25 +100,25 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
 */
     }
 
-    fun startUpdateActivity(date: String, index: Int) {
+    fun startUpdateActivity(date: LocalDate, index: Int) {
         Log.d(TAG, "startUpdateActivity()")
         val updateIntent = Intent(this, UpdateActivity::class.java)
         updateIntent.apply {
-            putExtra("date", date)
+            putExtra("date", date.toString())
             putExtra("index", index)
         }
         startActivity(updateIntent)
     }
 
     // AlertDialog 띄워서 yes면 지움
-    fun startDeleteAlertDialog(date: String, index: Int) {
+    fun startDeleteAlertDialog(date: LocalDate, index: Int) {
         Log.d(TAG, "startDeleteAlertDialog()")
         DeleteAlertDialogFragment.newInstance(date, index)
                 .show(supportFragmentManager, DELETE_FRAG_TAG)
     }
 
     // override DeleteDialogHelper
-    override fun delete(date: String, index: Int) {
+    override fun delete(date: LocalDate, index: Int) {
         Log.d(TAG, "delete(${date}, ${index})")
         dbViewModel.delete(date, index)
         Toast.makeText(this, R.string.delete_done_message, Toast.LENGTH_SHORT).show()
@@ -127,7 +128,7 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
     // InsertActivity와 완전 똑같음.
     override val datePickerViewModel by lazy { ViewModelProvider(this).get(DatePickerViewModel::class.java) }
 
-    override fun chooseDate(oldDate: String, callback: (String) -> Unit) {
+    override fun chooseDate(oldDate: LocalDate, callback: (LocalDate) -> Unit) {
         datePickerViewModel.callback = callback
         DatePickerFragment.newInstance(oldDate).show(supportFragmentManager, DATE_PICKER_FRAG_TAG)
     }

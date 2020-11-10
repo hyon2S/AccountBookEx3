@@ -6,9 +6,11 @@ import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import java.lang.IndexOutOfBoundsException
 import java.lang.StringBuilder
+import java.time.LocalDate
 
 open class DateRecord(
-        @PrimaryKey var date: String = "",
+        // LocalDate <-> Long, Epoch reference 사용
+        @PrimaryKey var date: Long = 0L,
         var list: RealmList<Record> = RealmList()
 ): RealmObject() {
     override fun toString(): String {
@@ -20,6 +22,9 @@ open class DateRecord(
 
         return sb.toString()
     }
+
+    fun getDate(): LocalDate =
+            LocalDate.ofEpochDay(date)
 
     fun add(index: Int = 0, record: Record) {
         // 같은 날짜 안에서는 최신 데이터를 앞으로 넣기

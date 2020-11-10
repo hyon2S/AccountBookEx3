@@ -4,7 +4,11 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
+import com.example.accountbookex3.AccountBookApplication
 import com.example.accountbookex3.R
+import com.example.accountbookex3.exception.StringFormException
+import java.time.LocalDate
+import java.time.format.DateTimeParseException
 
 /*
 * https://developer.android.com/guide/topics/ui/dialogs
@@ -13,13 +17,19 @@ import com.example.accountbookex3.R
 * 호출하는 쪽에서 retainInstance = true 설정 하고 매개변수로 전달하는 것으로 함.
 * */
 class DeleteAlertDialogFragment(): DialogFragment() {
-    private var date: String? = null
+    private var date: LocalDate? = null
     private var index: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            date = it.getString(DATE)
+            date = try {
+                LocalDate.parse(it.getString(DATE))
+            } catch (e: DateTimeParseException) {
+                throw StringFormException(
+                        AccountBookApplication.applicationContext().resources.getString(
+                                R.string.date))
+            }
             index = it.getInt(INDEX)
         }
     }
@@ -41,10 +51,10 @@ class DeleteAlertDialogFragment(): DialogFragment() {
         private const val INDEX = "index"
 
         @JvmStatic
-        fun newInstance(date: String, index: Int) =
+        fun newInstance(date: LocalDate, index: Int) =
                 DeleteAlertDialogFragment().apply {
                     arguments = Bundle().apply {
-                        putString(DATE, date)
+                        putString(DATE, date.toString())
                         putInt(INDEX, index)
                     }
                 }

@@ -9,21 +9,21 @@ import java.time.LocalDate
 * 기간: fromDate ~ toDate
 * */
 class DateViewModel: ViewModel() {
-    val fromDate: MutableLiveData<String> = MutableLiveData()
-    val toDate: MutableLiveData<String> = MutableLiveData()
+    val fromDate: MutableLiveData<LocalDate> = MutableLiveData()
+    val toDate: MutableLiveData<LocalDate> = MutableLiveData()
 
     init {
         fromDate.value = LocalDate.now()
-                .minusMonths(1).plusDays(1).toString()
-        toDate.value = LocalDate.now().toString()
+                .minusMonths(1).plusDays(1)
+        toDate.value = LocalDate.now()
     }
 
-    fun getFromDate(): String = fromDate.value!!
-    fun setFromDate(date: String) {
+    fun getFromDate(): LocalDate = fromDate.value!!
+    fun setFromDate(date: LocalDate) {
         fromDate.value = date
     }
-    fun getToDate(): String = toDate.value!!
-    fun setToDate(date: String) {
+    fun getToDate(): LocalDate = toDate.value!!
+    fun setToDate(date: LocalDate) {
         toDate.value = date
     }
 }

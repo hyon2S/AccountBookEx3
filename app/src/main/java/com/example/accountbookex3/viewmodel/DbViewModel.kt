@@ -8,6 +8,7 @@ import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.database.Repository
 import io.realm.Realm
 import io.realm.RealmResults
+import java.time.LocalDate
 
 class DbViewModel: ViewModel() {
     private val TAG = "DbViewModelLog"
@@ -21,26 +22,26 @@ class DbViewModel: ViewModel() {
         }
     }
 
-    fun update(date: String, index: Int, formedRecord: FormedRecord) {
+    fun update(date: LocalDate, index: Int, formedRecord: FormedRecord) {
         realm.executeTransaction {
             repository.update(date, index, formedRecord)
         }
     }
 
-    fun select(date: String, index: Int): Record =
+    fun select(date: LocalDate, index: Int): Record =
             repository.select(date, index)
 
     fun selectAll(): RealmResults<DateRecord> =
             repository.selectAll()
     // 진짜? 리턴하지 않고 변수로 갖고있다가 나중에 Rv의 list에 넣는다든지 할 수도 있지 않을까?
 
-    fun delete(date: String, index: Int) { // DateRecord와 Record자체를 변수로 받을수도 있을듯..?
+    fun delete(date: LocalDate, index: Int) { // DateRecord와 Record자체를 변수로 받을수도 있을듯..?
         realm.executeTransaction {
             repository.delete(date, index)
         }
     }
 
-    fun moveRecord(date: String, fromIndex: Int, toIndex: Int) {
+    fun moveRecord(date: LocalDate, fromIndex: Int, toIndex: Int) {
         realm.executeTransaction {
             repository.moveRecord(date, fromIndex, toIndex)
         }

@@ -15,6 +15,7 @@ import com.example.accountbookex3.edit.EditHelper
 import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.fragment_recycler_view.*
+import java.time.LocalDate
 
 class RecyclerViewFragment : Fragment(), EditHelper {
     private val TAG = "RecyclerViewFragmentLog"
@@ -49,11 +50,11 @@ class RecyclerViewFragment : Fragment(), EditHelper {
         }
     }
 
-    override fun startUpdate(date: String, index: Int) {
+    override fun startUpdate(date: LocalDate, index: Int) {
         attachedActivity.startUpdateActivity(date, index)
     }
 
-    override fun startDelete(date: String, index: Int) {
+    override fun startDelete(date: LocalDate, index: Int) {
         Log.d(TAG, "startDelete()")
         attachedActivity.startDeleteAlertDialog(date, index)
     }

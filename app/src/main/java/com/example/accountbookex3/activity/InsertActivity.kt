@@ -15,6 +15,7 @@ import com.example.accountbookex3.viewmodel.DatePickerViewModel
 import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModel
 import com.example.accountbookex3.viewmodel.InsertViewModelFactory
+import java.time.LocalDate
 
 class InsertActivity : AppCompatActivity(), DatePickerHelper {
     private val TAG = "InsertActivityLog"
@@ -77,7 +78,7 @@ class InsertActivity : AppCompatActivity(), DatePickerHelper {
     // DatePickerHelper 구현 항목들
     override val datePickerViewModel by lazy { ViewModelProvider(this).get(DatePickerViewModel::class.java) }
 
-    override fun chooseDate(oldDate: String, callback: (String) -> Unit) {
+    override fun chooseDate(oldDate: LocalDate, callback: (LocalDate) -> Unit) {
         datePickerViewModel.callback = callback
         DatePickerFragment.newInstance(oldDate).show(supportFragmentManager, DATE_PICKER_FRAG_TAG)
     }

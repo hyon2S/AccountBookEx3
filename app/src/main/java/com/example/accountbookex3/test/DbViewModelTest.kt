@@ -5,6 +5,7 @@ import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.data.FormedRecord
 import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.RealmResults
+import java.time.LocalDate
 
 /*
 * 이 클래스는 테스트 목적으로만 만들어졌으며 실제로 사용할 때는 아예 없어도 되게 만들어져있음.
@@ -20,16 +21,16 @@ class DbViewModelTest(val dbViewModel: DbViewModel) {
         insert(formedRecord)
         printResults(selectAll())
 */
-        move("2020-10-18", 0, 1)
+        // move("2020-10-18", 0, 1)
         Log.d(TAG, "test완료")
     }
 
-    private fun move(date: String, fromPosition: Int, toPosition: Int) {
+    private fun move(date: LocalDate, fromPosition: Int, toPosition: Int) {
         Log.d(TAG, "move(${date}: ${fromPosition} -> ${toPosition})")
         dbViewModel.moveRecord(date, fromPosition, toPosition)
     }
 
-    private fun delete(date: String, index: Int) {
+    private fun delete(date: LocalDate, index: Int) {
         Log.d(TAG, "delete()")
         dbViewModel.delete(date, index)
     }

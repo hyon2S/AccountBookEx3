@@ -15,6 +15,7 @@ import com.example.accountbookex3.viewmodel.UpdateViewModelFactory
 import com.example.accountbookex3.exception.RecordFormException
 import com.example.accountbookex3.fragment.UpdateButtonFragment
 import com.example.accountbookex3.fragment.UpdateFormFragment
+import java.time.LocalDate
 
 class UpdateActivity : AppCompatActivity(), DatePickerHelper {
     private val TAG = "UpdateActivityLog"
@@ -29,7 +30,7 @@ class UpdateActivity : AppCompatActivity(), DatePickerHelper {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update)
 
-        val date = intent.getStringExtra("date")
+        val date = LocalDate.parse(intent.getStringExtra("date"))
         // index를 받아오는 값이 없으면 오류가 나게 음수 값으로 함
         val index = intent.getIntExtra("index", -1)
 
@@ -80,7 +81,7 @@ class UpdateActivity : AppCompatActivity(), DatePickerHelper {
     // DatePickerHelper 구현 항목들
     override val datePickerViewModel by lazy { ViewModelProvider(this).get(DatePickerViewModel::class.java) }
 
-    override fun chooseDate(oldDate: String, callback: (String) -> Unit) {
+    override fun chooseDate(oldDate: LocalDate, callback: (LocalDate) -> Unit) {
         datePickerViewModel.callback = callback
         DatePickerFragment.newInstance(oldDate).show(supportFragmentManager, DATE_PICKER_FRAG_TAG)
     }

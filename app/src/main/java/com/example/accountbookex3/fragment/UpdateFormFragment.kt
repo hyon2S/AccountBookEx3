@@ -12,6 +12,7 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.databinding.FragmentInsertFormBinding
 import com.example.accountbookex3.datepicker.DatePickerHelper
 import com.example.accountbookex3.viewmodel.UpdateViewModel
+import java.time.LocalDate
 
 /*
 * 날짜 등등을 입력하는 입력 폼 부분.
@@ -42,7 +43,7 @@ class UpdateFormFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         Log.d(TAG, "데이터바인딩 세팅")
 
-        val callback: (String) -> Unit =
+        val callback: (LocalDate) -> Unit =
                 { newDate -> updateViewModel.formedRecord.setDate(newDate) }
 
         binding.tvDate.setOnClickListener {

@@ -22,12 +22,18 @@ class DatePickerFragment(): DialogFragment(), DatePickerDialog.OnDateSetListener
 
     val datePickerViewModel by lazy { ViewModelProvider(requireActivity()).get(DatePickerViewModel::class.java) }
 
-    private var oldDate: String? = null
+    private var oldDate: LocalDate? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            oldDate = it.getString(OLD_DATE)
+            oldDate = try {
+                LocalDate.parse(it.getString(OLD_DATE))
+            } catch (e: DateTimeParseException) {
+                throw StringFormException(
+                        AccountBookApplication.applicationContext().resources.getString(
+                                R.string.date))
+            }
         }
     }
 
@@ -36,29 +42,22 @@ class DatePickerFragment(): DialogFragment(), DatePickerDialog.OnDateSetListener
     * */
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         Log.d(TAG, "onCreateDialog()")
-        val date = try {
-            LocalDate.parse(oldDate)
-        } catch (e: DateTimeParseException) {
-            throw StringFormException(
-                    AccountBookApplication.applicationContext().resources.getString(
-                            R.string.date))
-        }
-        return DatePickerDialog(requireContext(), this, date.year, date.monthValue - 1, date.dayOfMonth)
+        return DatePickerDialog(requireContext(), this, oldDate!!.year, oldDate!!.monthValue - 1, oldDate!!.dayOfMonth)
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         Log.d(TAG, "onDateSet()")
         val newDate = LocalDate.of(year, month + 1, dayOfMonth)
-        datePickerViewModel.setDate(newDate.toString())
+        datePickerViewModel.setDate(newDate)
     }
 
     companion object {
         private const val OLD_DATE = "oldDate"
         @JvmStatic
-        fun newInstance(oldDate: String) =
+        fun newInstance(oldDate: LocalDate) =
                 DatePickerFragment().apply {
                     arguments = Bundle().apply {
-                        putString(OLD_DATE, oldDate)
+                        putString(OLD_DATE, oldDate.toString())
                     }
                 }
     }
