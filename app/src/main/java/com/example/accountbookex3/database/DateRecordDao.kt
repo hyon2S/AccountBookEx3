@@ -13,6 +13,9 @@ class DateRecordDao(val realm: Realm) {
     fun insert(date: Long): DateRecord =
             realm.createObject(DateRecord::class.java, date)
 
+    fun selectBetween(fromDate: Long, toDate: Long): RealmResults<DateRecord> =
+            realm.where<DateRecord>().between("date", fromDate, toDate).sort("date", Sort.DESCENDING).findAll()
+
     fun selectAll(): RealmResults<DateRecord> =
             realm.where<DateRecord>().sort("date", Sort.DESCENDING).findAll()
 

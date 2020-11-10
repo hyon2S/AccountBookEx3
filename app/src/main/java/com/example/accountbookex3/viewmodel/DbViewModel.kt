@@ -31,6 +31,9 @@ class DbViewModel: ViewModel() {
     fun select(date: LocalDate, index: Int): Record =
             repository.select(date, index)
 
+    fun selectBetween(fromDate: LocalDate, toDate: LocalDate): RealmResults<DateRecord> =
+            repository.selectBetween(fromDate, toDate)
+
     fun selectAll(): RealmResults<DateRecord> =
             repository.selectAll()
     // 진짜? 리턴하지 않고 변수로 갖고있다가 나중에 Rv의 list에 넣는다든지 할 수도 있지 않을까?

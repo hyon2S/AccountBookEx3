@@ -47,6 +47,9 @@ class Repository(val realm: Realm) {
             insert(formedRecord)
     }
 
+    fun selectBetween(fromDate: LocalDate, toDate: LocalDate): RealmResults<DateRecord> =
+            dateRecordDao.selectBetween(dateToLong(fromDate), dateToLong(toDate))
+
     fun selectAll(): RealmResults<DateRecord> =
             dateRecordDao.selectAll()
 
