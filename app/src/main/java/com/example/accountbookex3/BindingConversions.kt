@@ -21,4 +21,14 @@ object BindingConversions {
         Log.d(TAG, "bindAmount()")
         textView.text = amount.toString()
     }
+
+    @BindingAdapter("android:text")
+    @JvmStatic
+    fun bindIncomeOutcome(textView: TextView, isIncome: Boolean) {
+        Log.d(TAG, "bindIncomeOutcome()")
+        textView.text = if (isIncome)
+            AccountBookApplication.applicationContext().getString(R.string.income)
+        else
+            AccountBookApplication.applicationContext().getString(R.string.outcome)
+    }
 }

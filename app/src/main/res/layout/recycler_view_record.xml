@@ -19,7 +19,7 @@
             android:id="@+id/tv_income_outcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{record.isIncome ? @string/income : @string/outcome}"
+            android:text="@{record.isIncome}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
