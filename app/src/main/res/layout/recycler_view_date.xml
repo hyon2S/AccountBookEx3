@@ -19,7 +19,7 @@
             android:id="@+id/tv_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{dateRecord.date.toString()}"
+            android:text="@{dateRecord.date}"
             app:layout_constraintTop_toTopOf="parent"
             />
         <androidx.recyclerview.widget.RecyclerView
