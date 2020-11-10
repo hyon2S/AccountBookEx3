@@ -14,4 +14,11 @@ object BindingConversions {
         Log.d(TAG, "bindDate()")
         textView.text = date.toString()
     }
+
+    @BindingAdapter("android:text")
+    @JvmStatic
+    fun bindAmount(textView: TextView, amount: Int) {
+        Log.d(TAG, "bindAmount()")
+        textView.text = amount.toString()
+    }
 }

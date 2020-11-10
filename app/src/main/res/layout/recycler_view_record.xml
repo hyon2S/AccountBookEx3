@@ -39,7 +39,7 @@
                 android:id="@+id/tv_amount"
                 android:layout_width="185sp"
                 android:layout_height="wrap_content"
-                android:text="@{Integer.toString(record.amount)}"
+                android:text="@{record.amount}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
