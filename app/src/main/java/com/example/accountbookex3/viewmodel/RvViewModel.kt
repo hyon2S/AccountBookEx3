@@ -8,7 +8,7 @@ import java.time.LocalDate
 * DateFragment에 표시할 기간을 관리.
 * 기간: fromDate ~ toDate
 * */
-class DateViewModel: ViewModel() {
+class RvViewModel: ViewModel() {
     val fromDate: MutableLiveData<LocalDate> = MutableLiveData()
     val toDate: MutableLiveData<LocalDate> = MutableLiveData()
 

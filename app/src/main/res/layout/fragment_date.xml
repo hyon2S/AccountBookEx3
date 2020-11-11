@@ -6,8 +6,8 @@
     >
     <data>
         <variable
-            name="dateViewModel"
-            type="com.example.accountbookex3.viewmodel.DateViewModel" />
+            name="rvViewModel"
+            type="com.example.accountbookex3.viewmodel.RvViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:id="@+id/tv_from_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{dateViewModel.fromDate}"
+            android:text="@{rvViewModel.fromDate}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -37,7 +37,7 @@
             android:id="@+id/tv_to_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{dateViewModel.toDate}"
+            android:text="@{rvViewModel.toDate}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/tv_tilde"
