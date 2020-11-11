@@ -17,5 +17,4 @@ class InsertViewModelFactory(private val dbViewModel: DbViewModel): ViewModelPro
             throw IllegalArgumentException()
         }
     }
-
 }

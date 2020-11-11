@@ -20,5 +20,4 @@ class UpdateViewModelFactory
             throw IllegalArgumentException()
         }
     }
-
 }
