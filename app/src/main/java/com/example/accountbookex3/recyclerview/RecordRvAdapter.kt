@@ -8,14 +8,14 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.databinding.RecyclerViewRecordBinding
 import com.example.accountbookex3.dragandswipe.ItemTouchHelperAdapter
-import com.example.accountbookex3.edit.EditHelper
+import com.example.accountbookex3.edit.RvEditHelper
 import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 import java.time.LocalDate
 
 class RecordRvAdapter
-(val date: LocalDate, data: OrderedRealmCollection<Record>, val dbViewModel: DbViewModel, private val editHelper: EditHelper)
+(val date: LocalDate, data: OrderedRealmCollection<Record>, val dbViewModel: DbViewModel, private val rvEditHelper: RvEditHelper)
     : RealmRecyclerViewAdapter<Record, RecordRvViewHolder>(data, true, true), ItemTouchHelperAdapter
 {
     private val TAG = "RecordRvAdapterLog"
@@ -23,7 +23,7 @@ class RecordRvAdapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordRvViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: RecyclerViewRecordBinding = DataBindingUtil.inflate(inflater, R.layout.recycler_view_record, parent, false)
-        return RecordRvViewHolder(binding, editHelper)
+        return RecordRvViewHolder(binding, rvEditHelper)
     }
 
     override fun onBindViewHolder(holder: RecordRvViewHolder, position: Int) {

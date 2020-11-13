@@ -6,12 +6,12 @@ import androidx.databinding.DataBindingUtil
 import com.example.accountbookex3.R
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.databinding.RecyclerViewDateBinding
-import com.example.accountbookex3.edit.EditHelper
+import com.example.accountbookex3.edit.RvEditHelper
 import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 
-class DateRvAdapter(data: OrderedRealmCollection<DateRecord>, val dbViewModel: DbViewModel, private val editHelper: EditHelper):
+class DateRvAdapter(data: OrderedRealmCollection<DateRecord>, val dbViewModel: DbViewModel, private val rvEditHelper: RvEditHelper):
         RealmRecyclerViewAdapter<DateRecord, DateRvViewHolder>(data, true, true) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DateRvViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,6 +21,6 @@ class DateRvAdapter(data: OrderedRealmCollection<DateRecord>, val dbViewModel: D
 
     override fun onBindViewHolder(holder: DateRvViewHolder, position: Int) {
         val dateRecord = data?.get(position) ?: return
-        holder.bind(dateRecord, dbViewModel, editHelper)
+        holder.bind(dateRecord, dbViewModel, rvEditHelper)
     }
 }
