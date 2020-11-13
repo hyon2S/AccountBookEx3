@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.data.RecordInfo
-import com.example.accountbookex3.edit.DeleteAlertDialogFragment
+import com.example.accountbookex3.fragment.DeleteAlertDialogFragment
 import com.example.accountbookex3.datepicker.DatePickerFragment
 import com.example.accountbookex3.datepicker.DatePickerHelper
 import com.example.accountbookex3.edit.DeleteDialogHelper
