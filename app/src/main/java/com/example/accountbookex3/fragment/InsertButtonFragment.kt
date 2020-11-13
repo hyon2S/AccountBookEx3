@@ -7,12 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.accountbookex3.R
-import com.example.accountbookex3.activity.InsertActivity
+import com.example.accountbookex3.edit.InsertButtonAdapter
 import kotlinx.android.synthetic.main.fragment_insert_button.*
 
 class InsertButtonFragment : Fragment() {
     private val TAG = "InsertButtonFragmentLog"
-    private val attachedActivity by lazy { activity as InsertActivity }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -32,10 +31,10 @@ class InsertButtonFragment : Fragment() {
 
     private fun cancel() {
         Log.d(TAG, "cancel()")
-        attachedActivity.cancel()
+        (parentFragment as InsertButtonAdapter).cancel()
     }
     private fun insert() {
         Log.d(TAG, "insert()")
-        attachedActivity.insert()
+        (parentFragment as InsertButtonAdapter).insert()
     }
 }

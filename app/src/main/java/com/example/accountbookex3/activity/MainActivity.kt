@@ -10,12 +10,12 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.fragment.MainButtonFragment
 import com.example.accountbookex3.fragment.RecyclerViewFragment
 import com.example.accountbookex3.edit.DeleteAlertDialogFragment
-import com.example.accountbookex3.viewmodel.DbViewModel
 import com.example.accountbookex3.edit.DeleteDialogHelper
 import com.example.accountbookex3.datepicker.DatePickerFragment
 import com.example.accountbookex3.datepicker.DatePickerHelper
-import com.example.accountbookex3.viewmodel.DatePickerViewModel
 import com.example.accountbookex3.fragment.DateFragment
+import com.example.accountbookex3.fragment.InsertFragment
+import com.example.accountbookex3.viewmodel.*
 import java.time.LocalDate
 
 /*
@@ -27,15 +27,28 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
     private val TAG = "MainActivityLog"
 
     private val DELETE_FRAG_TAG = "delete_fragment"
-    private val DATE_PICKER_FRAG_TAG = "datePickerTag"
+    private val DATE_PICKER_FRAG_TAG = "date_picker"
+    private val INSERT_FRAGMENT_TAG = "insert_fragment"
 
-    private val dbViewModel by lazy { ViewModelProvider(this).get(DbViewModel::class.java) }
+    /*
+    * MainActivity에 붙은 다른 프래그먼트에서 MainActivity에서 만든 뷰모델을 그냥 가져다가 쓰기 때문에,
+    * lazy 초기화 말고 lateinit를 사용함.
+    * */
+    private lateinit var dbViewModel: DbViewModel
+    private lateinit var insertViewModel: InsertViewModel
+
+    private fun initViewModel() {
+        dbViewModel = ViewModelProvider(this).get(DbViewModel::class.java)
+        insertViewModel = ViewModelProvider(this, InsertViewModelFactory(dbViewModel))
+            .get(InsertViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate()")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initViewModel()
         attachFragment()
 
 //        startInsertActivity()
@@ -82,22 +95,12 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
     /*
     * 버튼 눌러서 ButtonFragment로부터 호출될 예정
     * */
-    fun startInsertActivity() {
-        Log.d(TAG, "startInsertActivity()")
-        val insertIntent = Intent(this, InsertActivity::class.java)
-        startActivity(insertIntent)
-
-        // 버튼 눌러서 테스트 용
-        // startUpdateActivity("2020-10-26", 1)
-
-        // DbViewModel 테스트
-/*
-        val dbViewModel = ViewModelProvider(this).get(DbViewModel::class.java)
-        Log.d(TAG, "dbViewModel 객체 생성")
-        val test = DbViewModelTest(dbViewModel)
-        Log.d(TAG, "DbViewModel test 생성")
-        test.test()
-*/
+    fun startInsertFragment() {
+        Log.d(TAG, "startInsertFragment()")
+        insertViewModel.initFormedRecord() // InsertFragment를 두 번째 호출할 때 부터는 이전의 정보가 남을 수 있기 때문에 초기화 시켜줌
+        val insertFragment: InsertFragment? = supportFragmentManager.findFragmentByTag(INSERT_FRAGMENT_TAG) as InsertFragment?
+        if (insertFragment == null)
+            InsertFragment.newInstance().show(supportFragmentManager.beginTransaction(), INSERT_FRAGMENT_TAG)
     }
 
     fun startUpdateActivity(date: LocalDate, index: Int) {

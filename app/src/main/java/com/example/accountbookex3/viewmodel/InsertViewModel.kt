@@ -4,7 +4,11 @@ import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.FormedRecord
 
 class InsertViewModel(val dbViewModel: DbViewModel): ViewModel() {
-    val formedRecord = FormedRecord()
+    var formedRecord = FormedRecord()
+
+    fun initFormedRecord() {
+        formedRecord = FormedRecord() // 새 걸로 만들어서 바꿔끼움.
+    }
 
     fun insert() {
         dbViewModel.insert(formedRecord)

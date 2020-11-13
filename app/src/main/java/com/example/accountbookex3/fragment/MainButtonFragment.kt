@@ -35,6 +35,6 @@ class MainButtonFragment : Fragment() {
 
     private fun startInsertActivity() {
         Log.d(TAG, "startInsertActivity()")
-        attachedActivity.startInsertActivity()
+        attachedActivity.startInsertFragment()
     }
 }
