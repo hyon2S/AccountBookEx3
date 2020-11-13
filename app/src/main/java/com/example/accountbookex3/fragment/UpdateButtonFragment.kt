@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.accountbookex3.R
-import com.example.accountbookex3.activity.UpdateActivity
+import com.example.accountbookex3.edit.UpdateButtonAdapter
 import kotlinx.android.synthetic.main.fragment_update_button.*
 
 /*
@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_update_button.*
 * */
 class UpdateButtonFragment : Fragment() {
     private val TAG = "UpdateButtonFragmentLog"
-    private val attachedActivity by lazy { activity as UpdateActivity }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +33,10 @@ class UpdateButtonFragment : Fragment() {
 
     private fun cancel() {
         Log.d(TAG, "cancel()")
-        attachedActivity.cancel()
+        (parentFragment as UpdateButtonAdapter).cancel()
     }
     private fun update() {
         Log.d(TAG, "update()")
-        attachedActivity.update()
+        (parentFragment as UpdateButtonAdapter).update()
     }
 }

@@ -1,20 +1,17 @@
 package com.example.accountbookex3.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
-import com.example.accountbookex3.fragment.MainButtonFragment
-import com.example.accountbookex3.fragment.RecyclerViewFragment
+import com.example.accountbookex3.data.RecordInfo
 import com.example.accountbookex3.edit.DeleteAlertDialogFragment
 import com.example.accountbookex3.edit.DeleteDialogHelper
 import com.example.accountbookex3.datepicker.DatePickerFragment
 import com.example.accountbookex3.datepicker.DatePickerHelper
-import com.example.accountbookex3.fragment.DateFragment
-import com.example.accountbookex3.fragment.InsertFragment
+import com.example.accountbookex3.fragment.*
 import com.example.accountbookex3.viewmodel.*
 import java.time.LocalDate
 
@@ -29,6 +26,7 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
     private val DELETE_FRAG_TAG = "delete_fragment"
     private val DATE_PICKER_FRAG_TAG = "date_picker"
     private val INSERT_FRAGMENT_TAG = "insert_fragment"
+    private val UPDATE_FRAGMENT_TAG = "update_fragment"
 
     /*
     * MainActivity에 붙은 다른 프래그먼트에서 MainActivity에서 만든 뷰모델을 그냥 가져다가 쓰기 때문에,
@@ -36,11 +34,14 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
     * */
     private lateinit var dbViewModel: DbViewModel
     private lateinit var insertViewModel: InsertViewModel
+    private lateinit var updateViewModel: UpdateViewModel
 
     private fun initViewModel() {
         dbViewModel = ViewModelProvider(this).get(DbViewModel::class.java)
         insertViewModel = ViewModelProvider(this, InsertViewModelFactory(dbViewModel))
             .get(InsertViewModel::class.java)
+        updateViewModel = ViewModelProvider(this, UpdateViewModelFactory(dbViewModel))
+            .get(UpdateViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,14 +104,13 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
             InsertFragment.newInstance().show(supportFragmentManager.beginTransaction(), INSERT_FRAGMENT_TAG)
     }
 
-    fun startUpdateActivity(date: LocalDate, index: Int) {
-        Log.d(TAG, "startUpdateActivity()")
-        val updateIntent = Intent(this, UpdateActivity::class.java)
-        updateIntent.apply {
-            putExtra("date", date.toString())
-            putExtra("index", index)
-        }
-        startActivity(updateIntent)
+    fun startUpdateFragment(date: LocalDate, index: Int) {
+        Log.d(TAG, "startUpdateFragment()")
+        val recordInfo = RecordInfo(date, index)
+        updateViewModel.recordInfo = recordInfo
+        val updateFragment: UpdateFragment? = supportFragmentManager.findFragmentByTag(UPDATE_FRAGMENT_TAG) as UpdateFragment?
+        if (updateFragment == null)
+            UpdateFragment.newInstance().show(supportFragmentManager.beginTransaction(), UPDATE_FRAGMENT_TAG)
     }
 
     // AlertDialog 띄워서 yes면 지움

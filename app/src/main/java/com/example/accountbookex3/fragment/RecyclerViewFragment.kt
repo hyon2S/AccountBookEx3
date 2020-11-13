@@ -51,7 +51,7 @@ class RecyclerViewFragment : Fragment(), EditHelper {
     }
 
     override fun startUpdate(date: LocalDate, index: Int) {
-        attachedActivity.startUpdateActivity(date, index)
+        attachedActivity.startUpdateFragment(date, index)
     }
 
     override fun startDelete(date: LocalDate, index: Int) {
