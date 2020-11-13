@@ -7,16 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.accountbookex3.R
-import com.example.accountbookex3.activity.MainActivity
+import com.example.accountbookex3.edit.EditFragmentStartHelper
 import kotlinx.android.synthetic.main.fragment_main_button.*
 
 /*
 * 버튼 누르면 현재 프래그먼트가 붙어있는 액티비티한테 새 액티비티를 띄우도록 요청함.
-* 현재 프래그먼트가 붙는 액티비티가 바뀌면 private val attachedActivity를 변경해야 함.
 * */
 class MainButtonFragment : Fragment() {
     private val TAG = "ButtonFragmentLog"
-    private val attachedActivity by lazy { activity as MainActivity }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +33,6 @@ class MainButtonFragment : Fragment() {
 
     private fun startInsertActivity() {
         Log.d(TAG, "startInsertActivity()")
-        attachedActivity.startInsertFragment()
+        (activity as EditFragmentStartHelper).startInsertFragment()
     }
 }

@@ -8,9 +8,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.data.RecordInfo
 import com.example.accountbookex3.edit.DeleteAlertDialogFragment
-import com.example.accountbookex3.edit.DeleteDialogHelper
 import com.example.accountbookex3.datepicker.DatePickerFragment
 import com.example.accountbookex3.datepicker.DatePickerHelper
+import com.example.accountbookex3.edit.DeleteDialogHelper
+import com.example.accountbookex3.edit.EditFragmentStartHelper
 import com.example.accountbookex3.fragment.*
 import com.example.accountbookex3.viewmodel.*
 import java.time.LocalDate
@@ -20,7 +21,7 @@ import java.time.LocalDate
 * private val insertActivityStarter
 * private fun attachFragment()
 * */
-class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
+class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DeleteDialogHelper, DatePickerHelper {
     private val TAG = "MainActivityLog"
 
     private val DELETE_FRAG_TAG = "delete_fragment"
@@ -96,7 +97,7 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
     /*
     * 버튼 눌러서 ButtonFragment로부터 호출될 예정
     * */
-    fun startInsertFragment() {
+    override fun startInsertFragment() {
         Log.d(TAG, "startInsertFragment()")
         insertViewModel.initFormedRecord() // InsertFragment를 두 번째 호출할 때 부터는 이전의 정보가 남을 수 있기 때문에 초기화 시켜줌
         val insertFragment: InsertFragment? = supportFragmentManager.findFragmentByTag(INSERT_FRAGMENT_TAG) as InsertFragment?
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
             InsertFragment.newInstance().show(supportFragmentManager.beginTransaction(), INSERT_FRAGMENT_TAG)
     }
 
-    fun startUpdateFragment(date: LocalDate, index: Int) {
+    override fun startUpdateFragment(date: LocalDate, index: Int) {
         Log.d(TAG, "startUpdateFragment()")
         val recordInfo = RecordInfo(date, index)
         updateViewModel.recordInfo = recordInfo
@@ -113,9 +114,8 @@ class MainActivity : AppCompatActivity(), DeleteDialogHelper, DatePickerHelper {
             UpdateFragment.newInstance().show(supportFragmentManager.beginTransaction(), UPDATE_FRAGMENT_TAG)
     }
 
-    // AlertDialog 띄워서 yes면 지움
-    fun startDeleteAlertDialog(date: LocalDate, index: Int) {
-        Log.d(TAG, "startDeleteAlertDialog()")
+    override fun startDeleteFragment(date: LocalDate, index: Int) {
+        Log.d(TAG, "startDeleteFragment()")
         DeleteAlertDialogFragment.newInstance(date, index)
                 .show(supportFragmentManager, DELETE_FRAG_TAG)
     }

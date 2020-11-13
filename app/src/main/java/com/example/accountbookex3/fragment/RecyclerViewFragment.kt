@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
-import com.example.accountbookex3.activity.MainActivity
 import com.example.accountbookex3.data.DateRecord
+import com.example.accountbookex3.edit.EditFragmentStartHelper
 import com.example.accountbookex3.recyclerview.DateRvAdapter
 import com.example.accountbookex3.edit.RvEditHelper
 import com.example.accountbookex3.viewmodel.DbViewModel
@@ -19,8 +19,6 @@ import java.time.LocalDate
 
 class RecyclerViewFragment : Fragment(), RvEditHelper {
     private val TAG = "RecyclerViewFragmentLog"
-
-    private val attachedActivity by lazy { activity as MainActivity }
 
     private val dbViewModel by lazy { ViewModelProvider(requireActivity()).get(DbViewModel::class.java) }
     lateinit var data: RealmResults<DateRecord>
@@ -51,11 +49,11 @@ class RecyclerViewFragment : Fragment(), RvEditHelper {
     }
 
     override fun startUpdate(date: LocalDate, index: Int) {
-        attachedActivity.startUpdateFragment(date, index)
+        (activity as EditFragmentStartHelper).startUpdateFragment(date, index)
     }
 
     override fun startDelete(date: LocalDate, index: Int) {
         Log.d(TAG, "startDelete()")
-        attachedActivity.startDeleteAlertDialog(date, index)
+        (activity as EditFragmentStartHelper).startDeleteFragment(date, index)
     }
 }
