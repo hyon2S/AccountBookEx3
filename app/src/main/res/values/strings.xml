@@ -19,8 +19,10 @@
     <string name="update_done_message">변경되었습니다.</string>
     <string name="delete_done_message">삭제되었습니다.</string>
 
-    <!-- 추가버튼에 쓸 문구 -->
-    <string name="button_add">추가</string>
+    <!-- 추가 수정 취소 버튼에 쓸 문구 -->
+    <string name="button_insert">추가</string>
+    <string name="button_update">수정</string>
+    <string name="button_cancel">취소</string>
 
     <!-- 레코드 삭제하기 전에 다시한번 확인하는 Dialog 문구 -->
     <string name="confirm_delete">삭제하시겠습니까?</string>
