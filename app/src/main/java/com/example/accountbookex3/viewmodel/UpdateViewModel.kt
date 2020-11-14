@@ -26,12 +26,12 @@ class UpdateViewModel(val dbViewModel: DbViewModel): ViewModel() {
         }
 
     private fun initFormedRecord() {
-        val record: Record = dbViewModel.select(recordInfo!!.date, recordInfo!!.index)
+        val record: Record = dbViewModel.select(recordInfo!!)
         inputFormData = InputFormData(recordInfo!!.date, record.isIncome, record.amount.toString())
     }
 
     fun update() {
         Log.d(TAG, "update()")
-        dbViewModel.update(recordInfo!!.date, recordInfo!!.index, inputFormData)
+        dbViewModel.update(recordInfo!!, inputFormData)
     }
 }

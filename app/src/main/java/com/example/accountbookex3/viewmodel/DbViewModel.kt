@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.data.InputFormData
 import com.example.accountbookex3.data.Record
+import com.example.accountbookex3.data.RecordInfo
 import com.example.accountbookex3.database.Repository
 import io.realm.Realm
 import io.realm.RealmResults
@@ -22,14 +23,14 @@ class DbViewModel: ViewModel() {
         }
     }
 
-    fun update(date: LocalDate, index: Int, inputFormData: InputFormData) {
+    fun update(recordInfo: RecordInfo, inputFormData: InputFormData) {
         realm.executeTransaction {
-            repository.update(date, index, inputFormData)
+            repository.update(recordInfo, inputFormData)
         }
     }
 
-    fun select(date: LocalDate, index: Int): Record =
-            repository.select(date, index)
+    fun select(recordInfo: RecordInfo): Record =
+            repository.select(recordInfo)
 
     fun selectBetween(fromDate: LocalDate, toDate: LocalDate): RealmResults<DateRecord> =
             repository.selectBetween(fromDate, toDate)
@@ -38,9 +39,9 @@ class DbViewModel: ViewModel() {
             repository.selectAll()
     // 진짜? 리턴하지 않고 변수로 갖고있다가 나중에 Rv의 list에 넣는다든지 할 수도 있지 않을까?
 
-    fun delete(date: LocalDate, index: Int) { // DateRecord와 Record자체를 변수로 받을수도 있을듯..?
+    fun delete(recordInfo: RecordInfo) { // DateRecord와 Record자체를 변수로 받을수도 있을듯..?
         realm.executeTransaction {
-            repository.delete(date, index)
+            repository.delete(recordInfo)
         }
     }
 

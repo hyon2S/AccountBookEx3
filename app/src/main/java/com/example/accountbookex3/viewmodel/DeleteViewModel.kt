@@ -7,6 +7,6 @@ class DeleteViewModel(val dbViewModel: DbViewModel): ViewModel() {
     // 삭제 할 Record의 날짜와 인덱스 정보를 저장
     var recordInfo: RecordInfo? = null
     fun delete() {
-        dbViewModel.delete(recordInfo!!.date, recordInfo!!.index)
+        dbViewModel.delete(recordInfo!!)
     }
 }

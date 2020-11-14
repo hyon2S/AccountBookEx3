@@ -32,7 +32,7 @@ class DbViewModelTest(val dbViewModel: DbViewModel) {
 
     private fun delete(date: LocalDate, index: Int) {
         Log.d(TAG, "delete()")
-        dbViewModel.delete(date, index)
+        // dbViewModel.delete(date, index)
     }
 
     private fun insert(inputFormData: InputFormData) {

@@ -5,6 +5,7 @@ import com.example.accountbookex3.R
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.data.InputFormData
 import com.example.accountbookex3.data.Record
+import com.example.accountbookex3.data.RecordInfo
 import com.example.accountbookex3.exception.DateRecordNotFoundException
 import com.example.accountbookex3.exception.RecordFormException
 import io.realm.Realm
@@ -38,11 +39,11 @@ class Repository(val realm: Realm) {
         dateRecord.add(index, record)
     }
 
-    fun update(date: LocalDate, index: Int, inputFormData: InputFormData) {
-        delete(date, index)
-        if (date == inputFormData.getDate())
+    fun update(recordInfo: RecordInfo, inputFormData: InputFormData) {
+        delete(recordInfo)
+        if (recordInfo.date == inputFormData.getDate())
         // 기존 인덱스 자리에 그대로 대체
-            insert(inputFormData, index)
+            insert(inputFormData, recordInfo.index)
         else
             insert(inputFormData)
     }
@@ -53,15 +54,15 @@ class Repository(val realm: Realm) {
     fun selectAll(): RealmResults<DateRecord> =
             dateRecordDao.selectAll()
 
-    fun select(date: LocalDate, index: Int): Record {
-        val dateRecord: DateRecord = getDateRecordOrException(dateToLong(date))
-        return dateRecord.get(index)
+    fun select(recordInfo: RecordInfo): Record {
+        val dateRecord: DateRecord = getDateRecordOrException(dateToLong(recordInfo.date))
+        return dateRecord.get(recordInfo.index)
     }
 
-    fun delete(date: LocalDate, index: Int) {
+    fun delete(recordInfo: RecordInfo) {
         // DateRecord의 list에서 빼낸 다음
-        val dateRecord: DateRecord = getDateRecordOrException(dateToLong(date))
-        val record = dateRecord.removeAt(index)
+        val dateRecord: DateRecord = getDateRecordOrException(dateToLong(recordInfo.date))
+        val record = dateRecord.removeAt(recordInfo.index)
         // realm에서도 지우기
         recordDao.delete(record)
         // dateRecord에 record가 하나도 안 남아있으면 없애버리기.
