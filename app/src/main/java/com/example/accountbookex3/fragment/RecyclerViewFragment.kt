@@ -28,7 +28,6 @@ class RecyclerViewFragment : Fragment(), RvEditHelper {
             savedInstanceState: Bundle?
     ): View? {
         Log.d(TAG, "onCreateView()")
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recycler_view, container, false)
     }
 
