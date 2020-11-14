@@ -12,19 +12,19 @@ class InsertFragment : EditFragment(), InsertButtonAdapter {
     private val TAG = "InsertFragmentLog"
 
     override val editViewModel: InsertViewModel by lazy { ViewModelProvider(requireActivity()).get(
-        InsertViewModel::class.java) }
+            InsertViewModel::class.java) }
 
     override fun attachFragment() {
         Log.d(TAG, "attachFragment()")
         val insertFormFragment: InsertFormFragment =
-            childFragmentManager.findFragmentById(R.id.csl_form) as InsertFormFragment? ?: InsertFormFragment()
+                childFragmentManager.findFragmentById(R.id.csl_form) as InsertFormFragment? ?: InsertFormFragment()
         val btnFragment: InsertButtonFragment =
-            childFragmentManager.findFragmentById(R.id.csl_buttons) as InsertButtonFragment? ?: InsertButtonFragment()
+                childFragmentManager.findFragmentById(R.id.csl_buttons) as InsertButtonFragment? ?: InsertButtonFragment()
 
         childFragmentManager.beginTransaction()
-            .replace(R.id.csl_form, insertFormFragment)
-            .replace(R.id.csl_buttons, btnFragment)
-            .commit()
+                .replace(R.id.csl_form, insertFormFragment)
+                .replace(R.id.csl_buttons, btnFragment)
+                .commit()
         Log.d(TAG, "프래그먼트 붙임")
     }
 

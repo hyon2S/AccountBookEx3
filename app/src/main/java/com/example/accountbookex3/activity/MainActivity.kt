@@ -14,11 +14,6 @@ import com.example.accountbookex3.fragment.*
 import com.example.accountbookex3.viewmodel.*
 import java.time.LocalDate
 
-/*
-* startActivity(intent) 관련 기능을 하는 구성요소들:
-* private val insertActivityStarter
-* private fun attachFragment()
-* */
 class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DatePickerHelper {
     private val TAG = "MainActivityLog"
 
@@ -39,9 +34,9 @@ class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DatePickerHel
     private fun initViewModel() {
         dbViewModel = ViewModelProvider(this).get(DbViewModel::class.java)
         insertViewModel = ViewModelProvider(this, InsertViewModelFactory(dbViewModel))
-            .get(InsertViewModel::class.java)
+                .get(InsertViewModel::class.java)
         updateViewModel = ViewModelProvider(this, UpdateViewModelFactory(dbViewModel))
-            .get(UpdateViewModel::class.java)
+                .get(UpdateViewModel::class.java)
         deleteViewModel = ViewModelProvider(this, DeleteViewModelFactory(dbViewModel))
                 .get(DeleteViewModel::class.java)
     }
@@ -54,29 +49,12 @@ class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DatePickerHel
         initViewModel()
         attachFragment()
 
-//        startInsertActivity()
-        // 리포지토리 테스트
-/*
-        val realm = Realm.getDefaultInstance()
-        val repository = Repository(realm)
-        val test = RepositoryTest(repository)
-        Log.d(TAG, "Repository test 생성")
-        test.test()
-*/
-
         // realm db 초기화 코드.
 /*
         val dbViewModel = ViewModelProvider(this).get(DbViewModel::class.java)
         dbViewModel.deleteAll()
 */
     }
-
-/*
-    override fun onDestroy() {
-        Log.d(TAG, "onDestroy()")
-        super.onDestroy()
-    }
-*/
 
     private fun attachFragment() {
         Log.d(TAG, "attachFragment()")
@@ -95,9 +73,7 @@ class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DatePickerHel
         Log.d(TAG, "프래그먼트 붙임")
     }
 
-    /*
-    * 버튼 눌러서 ButtonFragment로부터 호출될 예정
-    * */
+    // EditFragmentStartHelper 구현 항목들
     override fun startInsertFragment() {
         Log.d(TAG, "startInsertFragment()")
         insertViewModel.initFormedRecord() // InsertFragment를 두 번째 호출할 때 부터는 이전의 정보가 남을 수 있기 때문에 초기화 시켜줌
@@ -123,7 +99,6 @@ class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DatePickerHel
     }
 
     // DatePickerHelper 구현 항목들
-    // InsertActivity와 완전 똑같음.
     override val datePickerViewModel by lazy { ViewModelProvider(this).get(DatePickerViewModel::class.java) }
 
     override fun chooseDate(oldDate: LocalDate, callback: (LocalDate) -> Unit) {

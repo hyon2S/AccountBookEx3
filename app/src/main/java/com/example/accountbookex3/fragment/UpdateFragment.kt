@@ -12,19 +12,19 @@ class UpdateFragment : EditFragment(), UpdateButtonAdapter {
     private val TAG = "updateFragmentLog"
 
     override val editViewModel: UpdateViewModel by lazy { ViewModelProvider(requireActivity()).get(
-        UpdateViewModel::class.java) }
+            UpdateViewModel::class.java) }
 
     override fun attachFragment() {
         Log.d(TAG, "attachFragment()")
         val updateFormFragment: UpdateFormFragment =
-            childFragmentManager.findFragmentById(R.id.csl_form) as UpdateFormFragment? ?: UpdateFormFragment()
+                childFragmentManager.findFragmentById(R.id.csl_form) as UpdateFormFragment? ?: UpdateFormFragment()
         val btnFragment: UpdateButtonFragment =
-            childFragmentManager.findFragmentById(R.id.csl_buttons) as UpdateButtonFragment? ?: UpdateButtonFragment()
+                childFragmentManager.findFragmentById(R.id.csl_buttons) as UpdateButtonFragment? ?: UpdateButtonFragment()
 
         childFragmentManager.beginTransaction()
-            .replace(R.id.csl_form, updateFormFragment)
-            .replace(R.id.csl_buttons, btnFragment)
-            .commit()
+                .replace(R.id.csl_form, updateFormFragment)
+                .replace(R.id.csl_buttons, btnFragment)
+                .commit()
         Log.d(TAG, "프래그먼트 붙임")
     }
 
