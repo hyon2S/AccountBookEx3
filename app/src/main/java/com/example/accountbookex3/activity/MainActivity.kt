@@ -3,14 +3,12 @@ package com.example.accountbookex3.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.accountbookex3.R
 import com.example.accountbookex3.data.RecordInfo
 import com.example.accountbookex3.fragment.DeleteAlertDialogFragment
 import com.example.accountbookex3.datepicker.DatePickerFragment
 import com.example.accountbookex3.datepicker.DatePickerHelper
-import com.example.accountbookex3.edit.DeleteDialogHelper
 import com.example.accountbookex3.edit.EditFragmentStartHelper
 import com.example.accountbookex3.fragment.*
 import com.example.accountbookex3.viewmodel.*
@@ -21,7 +19,7 @@ import java.time.LocalDate
 * private val insertActivityStarter
 * private fun attachFragment()
 * */
-class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DeleteDialogHelper, DatePickerHelper {
+class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DatePickerHelper {
     private val TAG = "MainActivityLog"
 
     private val DELETE_FRAG_TAG = "delete_fragment"
@@ -36,6 +34,7 @@ class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DeleteDialogH
     private lateinit var dbViewModel: DbViewModel
     private lateinit var insertViewModel: InsertViewModel
     private lateinit var updateViewModel: UpdateViewModel
+    private lateinit var deleteViewModel: DeleteViewModel
 
     private fun initViewModel() {
         dbViewModel = ViewModelProvider(this).get(DbViewModel::class.java)
@@ -43,6 +42,8 @@ class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DeleteDialogH
             .get(InsertViewModel::class.java)
         updateViewModel = ViewModelProvider(this, UpdateViewModelFactory(dbViewModel))
             .get(UpdateViewModel::class.java)
+        deleteViewModel = ViewModelProvider(this, DeleteViewModelFactory(dbViewModel))
+                .get(DeleteViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -116,15 +117,9 @@ class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DeleteDialogH
 
     override fun startDeleteFragment(date: LocalDate, index: Int) {
         Log.d(TAG, "startDeleteFragment()")
-        DeleteAlertDialogFragment.newInstance(date, index)
-                .show(supportFragmentManager, DELETE_FRAG_TAG)
-    }
-
-    // override DeleteDialogHelper
-    override fun delete(date: LocalDate, index: Int) {
-        Log.d(TAG, "delete(${date}, ${index})")
-        dbViewModel.delete(date, index)
-        Toast.makeText(this, R.string.delete_done_message, Toast.LENGTH_SHORT).show()
+        val recordInfo = RecordInfo(date, index)
+        deleteViewModel.recordInfo = recordInfo
+        DeleteAlertDialogFragment.newInstance().show(supportFragmentManager, DELETE_FRAG_TAG)
     }
 
     // DatePickerHelper 구현 항목들
