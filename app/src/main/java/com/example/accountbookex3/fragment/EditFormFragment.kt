@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.accountbookex3.R
-import com.example.accountbookex3.databinding.FragmentInsertFormBinding
+import com.example.accountbookex3.databinding.FragmentInputFormBinding
 import com.example.accountbookex3.datepicker.DatePickerHelper
 import com.example.accountbookex3.viewmodel.EditViewModel
 import java.time.LocalDate
@@ -19,13 +19,13 @@ import java.time.LocalDate
 abstract class EditFormFragment: Fragment() {
     protected abstract val editViewModel: EditViewModel
 
-    private lateinit var binding: FragmentInsertFormBinding
+    private lateinit var binding: FragmentInputFormBinding
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_insert_form, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_input_form, container, false)
         return binding.root
     }
 
