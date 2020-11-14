@@ -3,7 +3,7 @@ package com.example.accountbookex3.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.DateRecord
-import com.example.accountbookex3.data.FormedRecord
+import com.example.accountbookex3.data.InputFormData
 import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.database.Repository
 import io.realm.Realm
@@ -16,15 +16,15 @@ class DbViewModel: ViewModel() {
     private val realm: Realm = Realm.getDefaultInstance()
     private val repository = Repository(realm)
 
-    fun insert(formedRecord: FormedRecord) {
+    fun insert(inputFormData: InputFormData) {
         realm.executeTransaction {
-            repository.insert(formedRecord)
+            repository.insert(inputFormData)
         }
     }
 
-    fun update(date: LocalDate, index: Int, formedRecord: FormedRecord) {
+    fun update(date: LocalDate, index: Int, inputFormData: InputFormData) {
         realm.executeTransaction {
-            repository.update(date, index, formedRecord)
+            repository.update(date, index, inputFormData)
         }
     }
 

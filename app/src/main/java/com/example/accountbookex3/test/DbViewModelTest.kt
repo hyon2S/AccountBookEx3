@@ -2,7 +2,7 @@ package com.example.accountbookex3.test
 
 import android.util.Log
 import com.example.accountbookex3.data.DateRecord
-import com.example.accountbookex3.data.FormedRecord
+import com.example.accountbookex3.data.InputFormData
 import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.RealmResults
 import java.time.LocalDate
@@ -16,9 +16,9 @@ class DbViewModelTest(val dbViewModel: DbViewModel) {
     fun test() {
         Log.d(TAG, "test()")
 /*
-        val formedRecord = FormedRecord(
+        val inputFormData = InputFormData(
             LocalDate.of(2020, 8, 3), false, 300)
-        insert(formedRecord)
+        insert(inputFormData)
         printResults(selectAll())
 */
         // move("2020-10-18", 0, 1)
@@ -35,9 +35,9 @@ class DbViewModelTest(val dbViewModel: DbViewModel) {
         dbViewModel.delete(date, index)
     }
 
-    private fun insert(formedRecord: FormedRecord) {
+    private fun insert(inputFormData: InputFormData) {
         Log.d(TAG, "insert()")
-        dbViewModel.insert(formedRecord)
+        dbViewModel.insert(inputFormData)
     }
 
     private fun selectAll(): RealmResults<DateRecord> {

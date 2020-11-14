@@ -2,7 +2,7 @@ package com.example.accountbookex3.test
 
 import android.util.Log
 import com.example.accountbookex3.data.DateRecord
-import com.example.accountbookex3.data.FormedRecord
+import com.example.accountbookex3.data.InputFormData
 import com.example.accountbookex3.database.Repository
 import io.realm.RealmResults
 
@@ -15,16 +15,16 @@ class RepositoryTest(val repository: Repository) {
     fun test() {
 /*
         Log.d(TAG, "test()")
-        val formedRecord = FormedRecord(
+        val inputFormData = InputFormData(
             LocalDate.of(2020, 10, 6), false, 5600)
-        insert(formedRecord)
+        insert(inputFormData)
         printResults(selectAll())
 */
     }
 
-    private fun insert(formedRecord: FormedRecord) {
+    private fun insert(inputFormData: InputFormData) {
         Log.d(TAG, "insert()")
-        repository.insert(formedRecord)
+        repository.insert(inputFormData)
     }
 
     private fun selectAll(): RealmResults<DateRecord> {

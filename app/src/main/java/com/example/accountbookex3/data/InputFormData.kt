@@ -3,7 +3,7 @@ package com.example.accountbookex3.data
 import androidx.lifecycle.MutableLiveData
 import java.time.LocalDate
 
-class FormedRecord(
+class InputFormData(
         date: LocalDate = LocalDate.now(), isIncome: Boolean = true, amount: String = "0") {
     val date: MutableLiveData<LocalDate> = MutableLiveData()
     val isIncome: MutableLiveData<Boolean> = MutableLiveData()

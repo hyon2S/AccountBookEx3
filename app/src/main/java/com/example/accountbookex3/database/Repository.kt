@@ -3,7 +3,7 @@ package com.example.accountbookex3.database
 import com.example.accountbookex3.AccountBookApplication
 import com.example.accountbookex3.R
 import com.example.accountbookex3.data.DateRecord
-import com.example.accountbookex3.data.FormedRecord
+import com.example.accountbookex3.data.InputFormData
 import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.exception.DateRecordNotFoundException
 import com.example.accountbookex3.exception.RecordFormException
@@ -15,19 +15,19 @@ class Repository(val realm: Realm) {
     private val dateRecordDao = DateRecordDao(realm)
     private val recordDao = RecordDao(realm)
 
-    fun insert(formedRecord: FormedRecord, index: Int = 0) {
+    fun insert(inputFormData: InputFormData, index: Int = 0) {
         val date: Long = try {
-            dateToLong(formedRecord.getDate())
+            dateToLong(inputFormData.getDate())
         } catch (e: Exception) {
             throw RecordFormException(AccountBookApplication.applicationContext().resources.getString(R.string.date_is))
         }
         val isIncome: Boolean = try {
-            formedRecord.getIsIncome()
+            inputFormData.getIsIncome()
         } catch (e: Exception) {
             throw RecordFormException(AccountBookApplication.applicationContext().resources.getString(R.string.income_outcome_is))
         }
         val amount: Int = try {
-            formedRecord.getAmount().toInt()
+            inputFormData.getAmount().toInt()
         } catch (e: Exception) {
             throw RecordFormException(AccountBookApplication.applicationContext().resources.getString(
                     R.string.amount_is))
@@ -38,13 +38,13 @@ class Repository(val realm: Realm) {
         dateRecord.add(index, record)
     }
 
-    fun update(date: LocalDate, index: Int, formedRecord: FormedRecord) {
+    fun update(date: LocalDate, index: Int, inputFormData: InputFormData) {
         delete(date, index)
-        if (date == formedRecord.getDate())
+        if (date == inputFormData.getDate())
         // 기존 인덱스 자리에 그대로 대체
-            insert(formedRecord, index)
+            insert(inputFormData, index)
         else
-            insert(formedRecord)
+            insert(inputFormData)
     }
 
     fun selectBetween(fromDate: LocalDate, toDate: LocalDate): RealmResults<DateRecord> =

@@ -2,10 +2,9 @@ package com.example.accountbookex3.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.accountbookex3.data.FormedRecord
+import com.example.accountbookex3.data.InputFormData
 import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.data.RecordInfo
-import java.time.LocalDate
 
 /*
  * UpdateActivity의 데이터들을 관리하는 역할을 함.
@@ -15,7 +14,7 @@ import java.time.LocalDate
 class UpdateViewModel(val dbViewModel: DbViewModel): ViewModel() {
     private val TAG = "UpdateViewModelLog"
 
-    var formedRecord: FormedRecord = FormedRecord()
+    var inputFormData: InputFormData = InputFormData()
 
     // 어느 날짜(date)의 몇 번째(index) 레코드를 수정하는지 정보 저장.
     var recordInfo: RecordInfo? = null
@@ -28,11 +27,11 @@ class UpdateViewModel(val dbViewModel: DbViewModel): ViewModel() {
 
     private fun initFormedRecord() {
         val record: Record = dbViewModel.select(recordInfo!!.date, recordInfo!!.index)
-        formedRecord = FormedRecord(recordInfo!!.date, record.isIncome, record.amount.toString())
+        inputFormData = InputFormData(recordInfo!!.date, record.isIncome, record.amount.toString())
     }
 
     fun update() {
         Log.d(TAG, "update()")
-        dbViewModel.update(recordInfo!!.date, recordInfo!!.index, formedRecord)
+        dbViewModel.update(recordInfo!!.date, recordInfo!!.index, inputFormData)
     }
 }

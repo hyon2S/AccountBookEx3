@@ -31,18 +31,18 @@ class InsertFormFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.formedRecord = insertViewModel.formedRecord
+        binding.inputFormData = insertViewModel.inputFormData
         // executePendingBindings 없으면 회전하면 화면 초기화 됨.
         binding.executePendingBindings()
         binding.lifecycleOwner = viewLifecycleOwner
         Log.d(TAG, "데이터바인딩 세팅")
 
         val callback: (LocalDate) -> Unit =
-                { newDate -> insertViewModel.formedRecord.setDate(newDate) }
+                { newDate -> insertViewModel.inputFormData.setDate(newDate) }
 
         binding.tvDate.setOnClickListener {
             Log.d(TAG, "tvDate click")
-            (activity as DatePickerHelper).chooseDate(insertViewModel.formedRecord.getDate(), callback)
+            (activity as DatePickerHelper).chooseDate(insertViewModel.inputFormData.getDate(), callback)
         }
     }
 }
