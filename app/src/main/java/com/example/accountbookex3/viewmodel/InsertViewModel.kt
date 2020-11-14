@@ -1,12 +1,9 @@
 package com.example.accountbookex3.viewmodel
 
-import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.InputFormData
 
-class InsertViewModel(val dbViewModel: DbViewModel): ViewModel() {
-    var inputFormData = InputFormData()
-
-    fun initFormedRecord() {
+class InsertViewModel(dbViewModel: DbViewModel): EditViewModel(dbViewModel) {
+    override fun initFormedRecord() {
         inputFormData = InputFormData() // 새 걸로 만들어서 바꿔끼움.
     }
 
