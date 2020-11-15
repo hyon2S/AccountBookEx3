@@ -9,13 +9,12 @@ import com.example.accountbookex3.data.Record
 import com.example.accountbookex3.databinding.RecyclerViewRecordBinding
 import com.example.accountbookex3.dragandswipe.ItemTouchHelperAdapter
 import com.example.accountbookex3.edit.RvEditHelper
-import com.example.accountbookex3.viewmodel.DbViewModel
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 import java.time.LocalDate
 
 class RecordRvAdapter
-(val date: LocalDate, data: OrderedRealmCollection<Record>, val dbViewModel: DbViewModel, private val rvEditHelper: RvEditHelper)
+(val date: LocalDate, data: OrderedRealmCollection<Record>, private val rvEditHelper: RvEditHelper)
     : RealmRecyclerViewAdapter<Record, RecordRvViewHolder>(data, true, true), ItemTouchHelperAdapter
 {
     private val TAG = "RecordRvAdapterLog"

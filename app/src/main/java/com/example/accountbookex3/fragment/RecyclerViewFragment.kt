@@ -43,7 +43,7 @@ class RecyclerViewFragment : Fragment(), RvEditHelper {
         Log.d(TAG, "initRecyclerView()")
         rv_outer.apply {
             setHasFixedSize(true)
-            adapter = DateRvAdapter(data, dbViewModel, this@RecyclerViewFragment)
+            adapter = DateRvAdapter(data, this@RecyclerViewFragment)
         }
     }
 
