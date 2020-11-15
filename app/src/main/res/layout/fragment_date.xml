@@ -10,10 +10,12 @@
             type="com.example.accountbookex3.viewmodel.RvViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/DateFragmentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".fragment.DateFragment">
         <TextView
+            style="@style/DateFragmentTv"
             android:id="@+id/tv_from_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,6 +26,7 @@
             app:layout_constraintRight_toLeftOf="@id/tv_tilde"
             />
         <TextView
+            style="@style/DateFragmentTv"
             android:id="@+id/tv_tilde"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,6 +37,7 @@
             app:layout_constraintRight_toLeftOf="@id/tv_to_date"
             />
         <TextView
+            style="@style/DateFragmentTv"
             android:id="@+id/tv_to_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

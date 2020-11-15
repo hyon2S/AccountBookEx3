@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- layout 구성요소들 스타일 -->
+    <style name="DateFragmentTv">
+        <item name="android:textSize">25sp</item>
+    </style>
+
     <style name="RvDateTv">
         <item name="android:background">@color/colorLightBlue</item>
         <item name="android:textColor">@color/colorWhite</item>
@@ -20,6 +24,10 @@
     <style name="RvRecordTvAmount" parent="RvRecordTv">
         <item name="android:gravity">right</item>
         <item name="android:paddingRight">10sp</item>
+    </style>
+
+    <style name="DateFragmentLayout">
+        <item name="android:paddingTop">6sp</item>
     </style>
 
     <style name="RvDateLayout">
