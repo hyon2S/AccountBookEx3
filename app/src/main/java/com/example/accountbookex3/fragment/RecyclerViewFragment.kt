@@ -12,7 +12,7 @@ import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.edit.EditFragmentStartHelper
 import com.example.accountbookex3.recyclerview.DateRvAdapter
 import com.example.accountbookex3.edit.RvEditHelper
-import com.example.accountbookex3.viewmodel.DbViewModel
+import com.example.accountbookex3.viewmodel.RvViewModel
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.fragment_recycler_view.*
 import java.time.LocalDate
@@ -20,7 +20,7 @@ import java.time.LocalDate
 class RecyclerViewFragment : Fragment(), RvEditHelper {
     private val TAG = "RecyclerViewFragmentLog"
 
-    private val dbViewModel by lazy { ViewModelProvider(requireActivity()).get(DbViewModel::class.java) }
+    private val rvViewModel by lazy { ViewModelProvider(requireActivity()).get(RvViewModel::class.java) }
     lateinit var data: RealmResults<DateRecord>
 
     override fun onCreateView(
@@ -33,17 +33,15 @@ class RecyclerViewFragment : Fragment(), RvEditHelper {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        Log.d(TAG, "onActivityCreated()")
-        data = dbViewModel.selectAll()
-        Log.d(TAG, "viewModel selectAll()로 data 얻어옴")
         initRecyclerView()
     }
 
     private fun initRecyclerView() {
         Log.d(TAG, "initRecyclerView()")
+        rvViewModel.adapter = DateRvAdapter(this@RecyclerViewFragment)
         rv_outer.apply {
             setHasFixedSize(true)
-            adapter = DateRvAdapter(data, this@RecyclerViewFragment)
+            adapter = rvViewModel.adapter
         }
     }
 

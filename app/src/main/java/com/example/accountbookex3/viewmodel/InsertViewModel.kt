@@ -2,13 +2,13 @@ package com.example.accountbookex3.viewmodel
 
 import com.example.accountbookex3.data.InputFormData
 
-class InsertViewModel(dbViewModel: DbViewModel): EditViewModel(dbViewModel) {
+class InsertViewModel(rvViewModel: RvViewModel): EditViewModel(rvViewModel) {
     override fun initFormedRecord() {
         inputFormData = InputFormData() // 새 걸로 만들어서 바꿔끼움.
     }
 
     fun insert() {
-        dbViewModel.insert(inputFormData)
+        rvViewModel.insert(inputFormData)
     }
 
     // 전부 지워도 됨. 일단 주석처리하겠음.

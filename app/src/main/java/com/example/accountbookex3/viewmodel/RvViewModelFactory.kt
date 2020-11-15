@@ -8,11 +8,11 @@ import java.lang.IllegalArgumentException
 * https://readystory.tistory.com/176
 * 의 4번 방법 이용해서 만듦
 * */
-class DeleteViewModelFactory(private val rvViewModel: RvViewModel)
+class RvViewModelFactory(private val dbViewModel: DbViewModel)
     : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return if (modelClass.isAssignableFrom(DeleteViewModel::class.java)) {
-            DeleteViewModel(rvViewModel) as T
+        return if (modelClass.isAssignableFrom(RvViewModel::class.java)) {
+            RvViewModel(dbViewModel) as T
         }
         else {
             throw IllegalArgumentException()

@@ -8,10 +8,10 @@ import java.lang.IllegalArgumentException
 * https://readystory.tistory.com/176
 * 의 4번 방법 이용해서 만듦
 * */
-class InsertViewModelFactory(private val dbViewModel: DbViewModel): ViewModelProvider.Factory {
+class InsertViewModelFactory(private val rvViewModel: RvViewModel): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(InsertViewModel::class.java)) {
-            InsertViewModel(dbViewModel) as T
+            InsertViewModel(rvViewModel) as T
         }
         else {
             throw IllegalArgumentException()

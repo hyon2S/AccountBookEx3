@@ -27,17 +27,20 @@ class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DatePickerHel
     * lazy 초기화 말고 lateinit를 사용함.
     * */
     private lateinit var dbViewModel: DbViewModel
+    private lateinit var rvViewModel: RvViewModel
     private lateinit var insertViewModel: InsertViewModel
     private lateinit var updateViewModel: UpdateViewModel
     private lateinit var deleteViewModel: DeleteViewModel
 
     private fun initViewModel() {
         dbViewModel = ViewModelProvider(this).get(DbViewModel::class.java)
-        insertViewModel = ViewModelProvider(this, InsertViewModelFactory(dbViewModel))
+        rvViewModel = ViewModelProvider(this, RvViewModelFactory(dbViewModel))
+                .get(RvViewModel::class.java)
+        insertViewModel = ViewModelProvider(this, InsertViewModelFactory(rvViewModel))
                 .get(InsertViewModel::class.java)
-        updateViewModel = ViewModelProvider(this, UpdateViewModelFactory(dbViewModel))
+        updateViewModel = ViewModelProvider(this, UpdateViewModelFactory(dbViewModel, rvViewModel))
                 .get(UpdateViewModel::class.java)
-        deleteViewModel = ViewModelProvider(this, DeleteViewModelFactory(dbViewModel))
+        deleteViewModel = ViewModelProvider(this, DeleteViewModelFactory(rvViewModel))
                 .get(DeleteViewModel::class.java)
     }
 
