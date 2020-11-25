@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         >
         <TextView
-            style="@style/RvRecordTvIncomeOutcome"
+            style="@style/RvRecordTv"
             android:id="@+id/tv_income_outcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,12 +32,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/tv_income_outcome"
-            app:layout_constraintRight_toLeftOf="@id/iv_delete"
+            app:layout_constraintRight_toLeftOf="@id/tv_memo"
             >
             <TextView
                 style="@style/RvRecordTvAmount"
                 android:id="@+id/tv_amount"
-                android:layout_width="185sp"
+                android:layout_width="95sp"
                 android:layout_height="wrap_content"
                 android:text="@{record.amount}"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,16 +57,27 @@
                 app:layout_constraintRight_toRightOf="parent"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            style="@style/RvRecordTvMemo"
+            android:id="@+id/tv_memo"
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:text="@={record.memo}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/csl_amount"
+            app:layout_constraintRight_toLeftOf="@id/iv_delete"
+            />
         <ImageView
             style="@style/DeleteButton"
             android:id="@+id/iv_delete"
-            android:layout_width="0dp"
+            android:layout_width="30sp"
             android:layout_height="0dp"
             android:src="@drawable/delete_button_image"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/csl_amount"
+            app:layout_constraintLeft_toRightOf="@id/tv_memo"
             app:layout_constraintRight_toRightOf="parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>

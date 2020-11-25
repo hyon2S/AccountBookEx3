@@ -25,7 +25,7 @@ class UpdateViewModel(rvViewModel: RvViewModel, val dbViewModel: DbViewModel)
 
     override fun initFormedRecord() {
         val record: Record = dbViewModel.select(recordInfo!!)
-        inputFormData = InputFormData(recordInfo!!.date, record.isIncome, record.amount.toString())
+        inputFormData = InputFormData(recordInfo!!.date, record.isIncome, record.amount.toString(), record.memo)
     }
 
     fun update() {
