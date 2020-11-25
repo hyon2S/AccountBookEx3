@@ -1,6 +1,5 @@
 package com.example.accountbookex3
 
-import android.util.Log
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import java.time.LocalDate
