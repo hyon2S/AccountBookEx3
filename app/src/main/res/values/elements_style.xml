@@ -3,18 +3,18 @@
     <!-- layout 구성요소들 스타일 -->
     <style name="DateFragmentTv">
         <item name="android:background">?attr/selectableItemBackground</item>
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="RvDateTv">
         <item name="android:background">@color/colorLightBlue</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textSize">30sp</item>
-        <item name="android:paddingLeft">15sp</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:paddingLeft">20sp</item>
     </style>
 
     <style name="RvRecordTv">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="RvRecordTvIncomeOutcome" parent="RvRecordTv">
@@ -54,7 +54,7 @@
     </style>
 
     <style name="InsertFormTv">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:padding">3dp</item>
     </style>
@@ -69,11 +69,11 @@
     </style>
 
     <style name="InsertFormBtn">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="FragmentButton">
-        <item name="android:padding">15sp</item>
+        <item name="android:padding">13sp</item>
     </style>
 
     <style name="DeleteButton">
