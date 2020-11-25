@@ -5,7 +5,7 @@ import io.realm.Realm
 import io.realm.kotlin.where
 
 class RecordDao(val realm: Realm) {
-    fun insert(isIncome: Boolean, amount: Int): Record {
+    fun insert(isIncome: Boolean, amount: Int, memo: String): Record {
         val id: Long = getId()
         // 적절한 id를 부여해서 새 레코드를 만듦.
         val newRecord: Record = realm.createObject(Record::class.java, id)
@@ -13,6 +13,7 @@ class RecordDao(val realm: Realm) {
         newRecord.apply {
             this.isIncome = isIncome
             this.amount = amount
+            this.memo = memo
         }
 
         return newRecord

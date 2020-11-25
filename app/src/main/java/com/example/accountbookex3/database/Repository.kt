@@ -33,9 +33,10 @@ class Repository(val realm: Realm) {
             throw RecordFormException(AccountBookApplication.applicationContext().resources.getString(
                     R.string.amount_is))
         }
+        val memo: String = inputFormData.getMemo()
 
         val dateRecord: DateRecord = getDateRecord(date) // 날짜 정보를 얻어옴.
-        val record = recordDao.insert(isIncome, amount)
+        val record = recordDao.insert(isIncome, amount, memo)
         dateRecord.add(index, record)
     }
 
