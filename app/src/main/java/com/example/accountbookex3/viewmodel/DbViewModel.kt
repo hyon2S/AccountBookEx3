@@ -57,6 +57,10 @@ class DbViewModel: ViewModel() {
         }
     }
 
+    // fromDate ~ toDate 기간 동안의 총수입/지출을 계산
+    fun getTotalIncomeOutcomeBetween(fromDate: LocalDate, toDate: LocalDate, isIncome: Boolean): Int =
+            repository.getTotalIncomeOutcomeBetween(fromDate, toDate, isIncome)
+
     override fun onCleared() {
         Log.d(TAG, "onCleared()")
         super.onCleared()

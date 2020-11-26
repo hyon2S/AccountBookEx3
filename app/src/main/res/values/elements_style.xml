@@ -27,6 +27,18 @@
         <item name="android:paddingRight">3sp</item>
     </style>
 
+    <style name="HorizontalLayout">
+        <item name="android:paddingHorizontal">12sp</item>
+    </style>
+
+    <style name="TotalAmountTv">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TotalAmountLayout" parent="HorizontalLayout">
+        <item name="android:paddingVertical">5sp</item>
+    </style>
+
     <style name="DateFragmentLayout">
         <item name="android:paddingTop">6sp</item>
     </style>
@@ -45,8 +57,8 @@
         <item name="android:paddingBottom">1dp</item>
     </style>
 
-    <style name="RvOuter">
-        <item name="android:padding">12sp</item>
+    <style name="RvOuter" parent="HorizontalLayout">
+        <item name="android:paddingTop">12sp</item>
     </style>
 
     <style name="InsertFormLayout">

@@ -67,11 +67,14 @@ class MainActivity : AppCompatActivity(), EditFragmentStartHelper, DatePickerHel
                 supportFragmentManager.findFragmentById(R.id.csl_buttons) as MainButtonFragment? ?: MainButtonFragment()
         val dateFragment: DateFragment =
                 supportFragmentManager.findFragmentById(R.id.csl_date) as DateFragment? ?: DateFragment()
+        val totalAmountsFragment: TotalAmountsFragment =
+                supportFragmentManager.findFragmentById(R.id.csl_total_amounts) as TotalAmountsFragment? ?: TotalAmountsFragment()
 
         supportFragmentManager.beginTransaction()
                 .replace(R.id.csl_recycler_view, rvFragment)
                 .replace(R.id.csl_buttons, btnFragment)
                 .replace(R.id.csl_date, dateFragment)
+                .replace(R.id.csl_total_amounts, totalAmountsFragment)
                 .commit()
         Log.d(TAG, "프래그먼트 붙임")
     }

@@ -8,6 +8,7 @@
     <string name="outcome">지출</string>
     <string name="date">날짜</string>
     <string name="memo">메모</string>
+    <string name="total_colon">총합:</string>
 
     <string name="won">원</string>
 
@@ -34,4 +35,7 @@
 
     <!-- 화면에 표시할 내역 기간 중에 '~' -->
     <string name="tilde">~</string>
+
+    <string name="minus_sign">−</string>
+    <string name="equal_sign">=</string>
 </resources>

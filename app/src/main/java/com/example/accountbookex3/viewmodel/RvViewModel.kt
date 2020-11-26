@@ -6,12 +6,13 @@ import androidx.lifecycle.ViewModel
 import com.example.accountbookex3.data.DateRecord
 import com.example.accountbookex3.data.InputFormData
 import com.example.accountbookex3.data.RecordInfo
+import com.example.accountbookex3.data.TotalAmounts
 import com.example.accountbookex3.recyclerview.DateRvAdapter
 import io.realm.RealmResults
 import java.time.LocalDate
 
 /*
-* 내역에 표시할 날짜와 RecyclerView Adapter를 관리
+* 내역에 표시할 날짜와 RecyclerView Adapter,  총수입/지출을 관리
 * insert, update, delete 기능을 통해 데이터의 내용이 바뀌거나, 내역을 보여 줄 기간이 바뀌면
 * setAdapterData()를 이용해 data를 새로 받아오고 adapter에 notify해줌
 * */
@@ -22,10 +23,14 @@ class RvViewModel(val dbViewModel: DbViewModel): ViewModel() {
     val fromDate: MutableLiveData<LocalDate> = MutableLiveData()
     val toDate: MutableLiveData<LocalDate> = MutableLiveData()
 
+    // 총수입, 총지출, 합계
+    val totalAmounts = TotalAmounts()
+
     init {
         fromDate.value = LocalDate.now()
                 .minusMonths(1).plusDays(1)
         toDate.value = LocalDate.now()
+        setTotalAmounts()
     }
 
     fun getFromDate(): LocalDate = fromDate.value!!
@@ -39,6 +44,14 @@ class RvViewModel(val dbViewModel: DbViewModel): ViewModel() {
         setAdapterData()
     }
 
+    private fun setTotalAmounts() {
+        Log.d(TAG, "setTotalAmounts()")
+        val income = dbViewModel.getTotalIncomeOutcomeBetween(getFromDate(), getToDate(), true)
+        val outcome = dbViewModel.getTotalIncomeOutcomeBetween(getFromDate(), getToDate(), false)
+        totalAmounts.setTotalAmounts(income, outcome)
+        Log.d(TAG, "총수입: ${income}, 총지출: ${outcome}")
+    }
+
     // 여기부터는 RecyclerView Adapter 관리
     var adapter: DateRvAdapter? = null
         set(value) {
@@ -50,6 +63,7 @@ class RvViewModel(val dbViewModel: DbViewModel): ViewModel() {
         Log.d(TAG, "setAdapterData()")
         adapter?.data = selectBetween()
         adapter?.notifyDataSetChanged()
+        setTotalAmounts()
     }
 
     private fun selectBetween(): RealmResults<DateRecord> =

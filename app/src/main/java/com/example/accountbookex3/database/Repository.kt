@@ -89,4 +89,18 @@ class Repository(val realm: Realm) {
 
     private fun dateToLong(date: LocalDate): Long =
             date.toEpochDay()
+
+    // fromDate ~ toDate 기간 동안의 총수입/지출을 계산
+    fun getTotalIncomeOutcomeBetween(fromDate: LocalDate, toDate: LocalDate, isIncome: Boolean): Int {
+        var total: Int = 0
+        for (date in dateToLong(fromDate)..dateToLong(toDate)) {
+            val dateRecord: DateRecord = dateRecordDao.select(date) ?: continue
+            val list = dateRecord.list
+            for (record in list) {
+                if (record.isIncome == isIncome)
+                    total += record.amount
+            }
+        }
+        return total
+    }
 }
