@@ -31,6 +31,7 @@ class AccountBookApplication: Application() {
         Realm.init(this)
         Log.d(TAG, "realm init")
 
+        // Realm 마이그레이션
         val config = RealmConfiguration.Builder()
                 .name("accountrealm.realm")
                 .schemaVersion(2)

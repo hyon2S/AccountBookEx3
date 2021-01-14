@@ -3,6 +3,9 @@ package com.example.accountbookex3.data
 import androidx.lifecycle.MutableLiveData
 import java.time.LocalDate
 
+/*
+* 수입/지출 내역을 입력할 때 입력해야되는 정보들을 담는 클래스.
+* */
 class InputFormData(
         date: LocalDate = LocalDate.now(), isIncome: Boolean = true, amount: String = "0", memo: String = "") {
     val date: MutableLiveData<LocalDate> = MutableLiveData()
